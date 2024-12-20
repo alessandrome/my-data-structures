@@ -1,13 +1,15 @@
 #include <iostream>
-#include "../basic/Stack.h"
+#include <iomanip>
+#include "../templated/Stack.h"
 
 using namespace std;
 
 // From root folder
-// g++ ./tests/stack_tests.cpp ./basic/Stack.cpp -o stack_tests -g2
+// g++ ./tests/stack_tests.cpp ./templated/Stack.cpp -o stack_tests -g2
 int main() {
-    int topVal = 0;
-    Stack myStack = Stack{};
+    double topVal = 0;
+    Stack<double> myStack = Stack<double>{};
+    std::cout << std::fixed << std::setprecision(3);
     try {
         cout << "Trying top() new empty stack: ";
         myStack.top();
@@ -23,8 +25,8 @@ int main() {
         cout << "[OK] \"" << e.what() << "\"" << endl;
     }
 
-    myStack.push(3);
-    myStack.push(4);
+    myStack.push(3.1);
+    myStack.push(4.106);
     topVal = myStack.size();
     if (myStack.size() == 2){
         cout << "[OK] " << "size(): " << topVal << endl;
@@ -33,14 +35,14 @@ int main() {
     }
 
     topVal = myStack.top();
-    if (topVal == 4) {
+    if (topVal == 4.106) {
         cout << "[OK] " << "First pop(): " << topVal << endl;
     }  else {
         cout << "[ERR] " << "First pop(): " << topVal << endl;
     }
     myStack.pop();
     topVal = myStack.top();
-    if (topVal == 3) {
+    if (topVal == 3.1) {
         cout << "[OK] " << "Second pop(): " << topVal << endl;
     }  else {
         cout << "[ERR] " << "Second pop(): " << topVal << endl;

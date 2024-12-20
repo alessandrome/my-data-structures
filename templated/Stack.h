@@ -1,3 +1,5 @@
+#include <exception>
+
 #ifndef MY_DATA_STRUCTURES_STACK_H
 #define MY_DATA_STRUCTURES_STACK_H
 
@@ -9,18 +11,19 @@ class StackEmptyException : public std::exception {
 };
 
 
-//template <typename T>
+template <typename T>
 class Stack {
     private:
-    int* stack;
+    T* stack;
     unsigned int internalSize;  // Internal size of array used as Stack
     unsigned int elements;  // Number of elements in the Stack
 
     public:
     Stack();
-    void push(int);
+    ~Stack();
+    void push(T);
     void pop();
-    int top();
+    T top();
     unsigned int size();
     bool empty();
 
@@ -28,5 +31,6 @@ class Stack {
     void _incrementSize(int);
 };
 
+#include "Stack.tpp"
 
 #endif //MY_DATA_STRUCTURES_STACK_H
