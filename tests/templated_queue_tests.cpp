@@ -1,6 +1,6 @@
 #include <iostream>
 #include <iomanip>
-#include "../templated/Queue.h"
+#include "../templated/Linear/Queue.h"
 
 using namespace std;
 

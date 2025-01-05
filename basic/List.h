@@ -8,18 +8,21 @@ class Node {
     Node* _next;
 
     public:
-    Node();
-    ~Node();
+    Node(int val);
+//    ~Node();
     int value();
     Node* next();
+    void setNext(Node*);
 };
 
 class List {
     private:
     unsigned int _length;
+    Node* _entry;
 
     public:
     List();
+    ~List();
     unsigned int length();
     void append(int element);
     void prepend(int element);

@@ -1,6 +1,6 @@
 #include <iostream>
 #include <iomanip>
-#include "../templated/Stack.h"
+#include "../templated/Linear/Stack.h"
 
 using namespace std;
 

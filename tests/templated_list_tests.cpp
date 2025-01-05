@@ -1,11 +1,10 @@
 #include <iostream>
 #include <iomanip>
-#include "../templated/List.h"
+#include "../templated/Linear/List.h"
 
 using namespace std;
 
 // From root folder
-// g++ ./tests/stack_tests.cpp ./templated/Stack.cpp -o stack_tests -g2
 int main() {
     double topVal = 0;
     List<int> list{};
