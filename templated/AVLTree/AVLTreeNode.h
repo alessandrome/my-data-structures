@@ -16,7 +16,9 @@ namespace myds {
 
         AVLNode *right();
         AVLNode *left();
+        int balance() const;
         size_t height() const;
+        void updateHeight();
 
         void setLeft(AVLNode<T> *);
         void setRight(AVLNode<T> *);
