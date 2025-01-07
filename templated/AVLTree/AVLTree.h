@@ -36,6 +36,9 @@ namespace myds {
         AVLNode<T> *_remove(const T &value, AVLNode<T> *root, bool &removed);
         size_t _height(AVLNode<T> *root) const;
 
+        AVLNode<T>* _leftRotate(AVLNode<T> *root);
+        AVLNode<T>* _rightRotate(AVLNode<T> *root);
+
         public:
         AVLTree();
         AVLTree(bool allowDuplicates);
