@@ -37,8 +37,8 @@ template <typename T>
 class List {
     private:
     unsigned int _length;
-    Node<T>* _entry;
-    Node<T>* _last;
+    Node<T> *_entry;
+    Node<T> *_last;
 
     public:
     List();
@@ -54,6 +54,7 @@ class List {
 
     template<typename F>
     friend std::ostream& operator<<(std::ostream& os, const List<F>& list);
+    T& operator[](size_t index);
 };
 
 #include "List.tpp"

@@ -27,5 +27,9 @@ int main() {
     list.remove(3);
     cout << "Length: " << list.length() << " - " << list << endl;  // [3, 5, 1]
     cout << "Empty(): " << (list.empty() ? "true" : "false") << endl;  // False
+    cout << "Overload [] (using 1): " << list[1] << endl;
+    list[1] = 7;
+    cout << "Overload [] (using 1 after direct edit): " << list[1] << endl;
+    cout << list << endl;
     return 0;
 }
