@@ -44,7 +44,7 @@ class List {
     public:
     List();
     ~List();
-    size_t length();
+    size_t length() const;
     bool empty();
     void append(T element);
     void prepend(T element);
