@@ -34,3 +34,7 @@
 
 # IDEA IDE
 .idea/
+
+# Build files
+build/*
+!build/.gitkeep

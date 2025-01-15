@@ -80,5 +80,13 @@ int main() {
     }  else {
         cout << "[ERR] " << "Not Empty but considered empty " << topVal << endl;
     }
+
+    // Operator Overloads
+    myQueue += 100;
+    if (myQueue.back() == 100) {
+        cout << "[OK] " << "Correct += (push) overload" << endl;
+    }  else {
+        cout << "[ERR] " << "Expected pushed 100 with += operator, " << myQueue.back() << " found instead" << endl;
+    }
     return 0;
 }

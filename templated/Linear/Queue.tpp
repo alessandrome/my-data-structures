@@ -79,3 +79,15 @@ void Queue<T>::_incrementSize(int increment) {
     }
     delete[] oldArr;
 }
+
+// Operator Overloads
+template <typename T>
+Queue<T> &Queue<T>::operator+=(T val) {
+    push(val);
+    return *this;
+}
+template <typename T>
+Queue<T> &Queue<T>::operator+=(T &val) {
+    push(val);
+    return *this;
+}

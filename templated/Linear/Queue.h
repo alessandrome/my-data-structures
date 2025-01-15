@@ -26,6 +26,9 @@ class Queue {
     T back();
     unsigned int size();
     bool empty();
+    // Overloads
+    Queue &operator+=(T val);
+    Queue &operator+=(T& val);
 
     private:
     void _incrementSize(int);
