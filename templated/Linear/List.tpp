@@ -29,7 +29,7 @@ List<T>::~List() {
 }
 
 template <typename T>
-unsigned int List<T>::length() { return _length; }
+size_t List<T>::length() { return _length; }
 
 template <typename T>
 bool List<T>::empty() { return _length == 0; }

@@ -1,8 +1,9 @@
+#ifndef MY_DATA_STRUCTURES_LIST_H
+#define MY_DATA_STRUCTURES_LIST_H
+#include <cstddef>
 #include <exception>
 #include <string>
 #include <sstream>
-#ifndef MY_DATA_STRUCTURES_LIST_H
-#define MY_DATA_STRUCTURES_LIST_H
 
 class IndexOutOfRangeException : public std::exception {
     private:
@@ -36,14 +37,14 @@ class Node {
 template <typename T>
 class List {
     private:
-    unsigned int _length;
+    size_t _length;
     Node<T> *_entry;
     Node<T> *_last;
 
     public:
     List();
     ~List();
-    unsigned int length();
+    size_t length();
     bool empty();
     void append(T element);
     void prepend(T element);
