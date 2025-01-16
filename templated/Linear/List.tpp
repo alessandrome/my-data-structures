@@ -155,11 +155,7 @@ std::ostream& operator<<(std::ostream& os, const List<T>& list) {
 
 
 template<typename T>
-T &List<T>::operator[](size_t index) {
-    if (index >= _length) throw IndexOutOfRangeException(index);
-    Node<T> *pointedValue = _entry;
-    for (int i = 0; i < index; i++) {
-        pointedValue = pointedValue->next();
-    }
-    return pointedValue->value;
+T& List<T>::operator[](size_t index) {
+    // Same behavior of the get(index) method
+    return get(index);
 }
