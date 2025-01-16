@@ -123,18 +123,22 @@ void List<T>::remove(size_t index) {
     if (index >= _length) {
         throw IndexOutOfRangeException(index);
     }
-    Node<T>* actual = nullptr;
-    auto next = _entry;
+    Node<T>* predecessorNode = nullptr; // Will contain predecessor of node to remove
+    auto toRemoveNode = _entry; // Will contain node to remove
+    // Iterate through the list
     for (size_t i = 0; i < index; i++) {
-        actual = next;
-        next = next->next();
+        predecessorNode = toRemoveNode;
+        toRemoveNode = toRemoveNode->next();
     }
-    if (actual != nullptr) {
-        actual->setNext(next->next());
+    if (predecessorNode != nullptr) {
+        // The node to remove is NOT the head: set its successor as the next to the node to remove
+        predecessorNode->setNext(toRemoveNode->next());
     } else {
-        _entry = actual;
+        // The node to remove IS the head: replace entry point of the list with successor of the node to remove
+        _entry = toRemoveNode->next();
     };
-    delete next;
+    if (_last == toRemoveNode) _last = predecessorNode; // If the node to remove is the last one, update _last pointer
+    delete toRemoveNode;
     _length--;
 }
 
