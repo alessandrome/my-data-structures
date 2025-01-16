@@ -12,9 +12,12 @@
 
 // (De)Constructor
 template <typename T>
-Stack<T>::Stack(): internalSize(0), elements(0) {
+Stack<T>::Stack(): internalSize(DEFAULT_STACK_SIZE), elements(0) {
     stack = new T[DEFAULT_STACK_SIZE];
-    internalSize = DEFAULT_STACK_SIZE;
+}
+template <typename T>
+Stack<T>::Stack(size_t startingCapacity): internalSize(startingCapacity), elements(0) {
+    stack = new T[startingCapacity];
 }
 template <typename T>
 Stack<T>::~Stack() {
@@ -57,10 +60,11 @@ bool Stack<T>::empty() {
 
 // Private methods
 template <typename T>
-void Stack<T>::_incrementSize(int increment) {
+void Stack<T>::_incrementSize(size_t increment) {
     T* oldStack = stack;
     stack = new T[internalSize + increment];  // TODO: We're not checking if new allocation is done successfully (no NULL pointer)
-    for (int i=0; i < elements; i++) {
+    // We're going to copy the old array in the new one
+    for (size_t i=0; i < elements; i++) {
         stack[i] = oldStack[i];
     }
     delete[] oldStack;

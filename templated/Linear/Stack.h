@@ -15,11 +15,12 @@ template <typename T>
 class Stack {
     private:
     T* stack;
-    unsigned int internalSize;  // Internal size of array used as Stack
-    unsigned int elements;  // Number of elements in the Stack
+    size_t internalSize;  // Internal size of array used as Stack
+    size_t elements;  // Number of elements in the Stack
 
     public:
     Stack();
+    Stack(size_t);
     ~Stack();
     void push(T);
     void pop();
@@ -28,7 +29,7 @@ class Stack {
     bool empty();
 
     private:
-    void _incrementSize(int);
+    void _incrementSize(size_t);
 };
 
 #include "Stack.tpp"

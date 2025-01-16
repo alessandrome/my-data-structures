@@ -12,9 +12,12 @@
 
 // (De)Constructor
 template <typename T>
-Queue<T>::Queue(): internalSize(0), elements(0) {
+Queue<T>::Queue(): internalSize(DEFAULT_QUEUE_SIZE), elements(0) {
     arr = new T[DEFAULT_QUEUE_SIZE];
-    internalSize = DEFAULT_QUEUE_SIZE;
+}
+template <typename T>
+Queue<T>::Queue(size_t startingSize): internalSize(startingSize), elements(0) {
+    arr = new T[startingSize];
 }
 template <typename T>
 Queue<T>::~Queue() {

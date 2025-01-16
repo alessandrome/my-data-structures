@@ -15,10 +15,11 @@ template <typename T>
 class Queue {
     private:
     T* arr;  // Pointer to dynamic array where push elements
-    unsigned int internalSize;  // Internal size of array used as Queue
-    unsigned int elements;  // Number of elements in the Queue
+    size_t internalSize;  // Internal size of array used as Queue
+    size_t elements;  // Number of elements in the Queue
     public:
     Queue();
+    Queue(size_t startingSize);
     ~Queue();
     void push(T);
     T pop();
