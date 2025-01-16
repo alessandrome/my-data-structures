@@ -117,6 +117,10 @@ void List<T>::set(T& value, size_t index) {
         actual->value = value;
     }
 }
+template<typename T>
+void List<T>::set(T &&value, size_t index) {
+    set(value, index);
+}
 
 template<typename T>
 void List<T>::remove(size_t index) {
