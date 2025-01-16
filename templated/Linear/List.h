@@ -45,11 +45,11 @@ class List {
     List();
     ~List();
     size_t length() const;
-    bool empty();
+    bool empty() const;
     void append(T element);
     void prepend(T element);
     void insert(T element, size_t index);  // Index starts from 0
-    T get(size_t index) const;
+    T& get(size_t index) const;
     void set(T value, size_t index);
     void remove(size_t index);
 

@@ -32,7 +32,7 @@ template <typename T>
 size_t List<T>::length() const { return _length; }
 
 template <typename T>
-bool List<T>::empty() { return _length == 0; }
+bool List<T>::empty() const { return _length == 0; }
 
 template <typename T>
 void List<T>::append(T element) {
@@ -85,7 +85,7 @@ void List<T>::insert(T element, size_t index) {
 
 
 template<typename T>
-T List<T>::get(size_t index) const {
+T& List<T>::get(size_t index) const {
     if (index >= _length) {
         throw IndexOutOfRangeException(index);
     }
