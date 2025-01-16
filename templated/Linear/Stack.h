@@ -27,6 +27,7 @@ class Stack {
     T top();
     unsigned int size();
     bool empty();
+    Stack& operator+=(T& element);
 
     private:
     void _incrementSize(size_t);

@@ -57,6 +57,12 @@ bool Stack<T>::empty() {
     return elements <= 0;
 }
 
+template <typename T>
+Stack<T>& Stack<T>::operator+=(T& element) {
+    push(element);
+    return *this;
+}
+
 
 // Private methods
 template <typename T>
