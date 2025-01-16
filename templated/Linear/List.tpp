@@ -89,6 +89,10 @@ T& List<T>::get(size_t index) const {
     if (index >= _length) {
         throw IndexOutOfRangeException(index);
     }
+    if (index == _length - 1) {
+        // Simply return value in the _last node
+        return _last->value;
+    }
     auto actual = _entry;
     for (size_t i = 0; i < index; i++) {
         actual = actual->next();
@@ -97,15 +101,21 @@ T& List<T>::get(size_t index) const {
 }
 
 template<typename T>
-void List<T>::set(T value, size_t index) {
+void List<T>::set(T& value, size_t index) {
     if (index >= _length) {
         throw IndexOutOfRangeException(index);
     }
-    auto actual = _entry;
-    for (size_t i = 0; i < index; i++) {
-        actual = actual->next();
+    if (index == _length - 1) {
+        // Simply set the value in the _last node
+        _last->value = value;
+    } else {
+        // Else iterate through the list to reach the index positioned Node<T>
+        auto actual = _entry;
+        for (size_t i = 0; i < index; i++) {
+            actual = actual->next();
+        }
+        actual->value = value;
     }
-    actual->value = value;
 }
 
 template<typename T>

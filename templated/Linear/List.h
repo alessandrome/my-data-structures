@@ -50,7 +50,7 @@ class List {
     void prepend(T element);
     void insert(T element, size_t index);  // Index starts from 0
     T& get(size_t index) const;
-    void set(T value, size_t index);
+    void set(T& value, size_t index);
     void remove(size_t index);
 
     template<typename F>
