@@ -5,7 +5,7 @@
 
 class QueueEmptyException : public std::exception {
     public:
-    const char* what() const noexcept override {
+    const char *what() const noexcept override {
         return "Attempted to access top or pop from an empty stack";
     }
 };
@@ -14,9 +14,10 @@ class QueueEmptyException : public std::exception {
 template <typename T>
 class Queue {
     private:
-    T* arr;  // Pointer to dynamic array where push elements
+    T *arr;  // Pointer to dynamic array where push elements
     size_t internalSize;  // Internal size of array used as Queue
     size_t elements;  // Number of elements in the Queue
+
     public:
     Queue();
     Queue(size_t startingSize);
@@ -28,8 +29,7 @@ class Queue {
     unsigned int size();
     bool empty();
     // Overloads
-    Queue &operator+=(T val);
-    Queue &operator+=(T& val);
+    Queue &operator+=(const T &val);
 
     private:
     void _incrementSize(int);

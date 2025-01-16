@@ -5,7 +5,7 @@
 
 class StackEmptyException : public std::exception {
     public:
-    const char* what() const noexcept override {
+    const char *what() const noexcept override {
         return "Attempted to access top or pop from an empty stack";
     }
 };
@@ -14,9 +14,12 @@ class StackEmptyException : public std::exception {
 template <typename T>
 class Stack {
     private:
-    T* stack;
+    T *stack;
     size_t internalSize;  // Internal size of array used as Stack
     size_t elements;  // Number of elements in the Stack
+
+    private:
+    void _incrementSize(size_t);
 
     public:
     Stack();
@@ -27,10 +30,7 @@ class Stack {
     T top();
     unsigned int size();
     bool empty();
-    Stack& operator+=(T& element);
-
-    private:
-    void _incrementSize(size_t);
+    Stack &operator+=(const T &element);
 };
 
 #include "Stack.tpp"

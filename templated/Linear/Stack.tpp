@@ -58,7 +58,7 @@ bool Stack<T>::empty() {
 }
 
 template <typename T>
-Stack<T>& Stack<T>::operator+=(T& element) {
+Stack<T>& Stack<T>::operator+=(const T& element) {
     push(element);
     return *this;
 }

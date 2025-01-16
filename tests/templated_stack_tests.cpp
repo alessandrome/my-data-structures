@@ -60,5 +60,12 @@ int main() {
     }  else {
         cout << "[ERR] " << "Empty but considered not empty" << endl;
     }
+
+    myStack += 5;
+    if (myStack.top() == 5) {
+        cout << "[OK] " << "Correctly used +=" << endl;
+    }  else {
+        cout << "[ERR] " << "Error with +=" << endl;
+    }
     return 0;
 }

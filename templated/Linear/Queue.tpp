@@ -85,12 +85,7 @@ void Queue<T>::_incrementSize(int increment) {
 
 // Operator Overloads
 template <typename T>
-Queue<T> &Queue<T>::operator+=(T val) {
-    push(val);
-    return *this;
-}
-template <typename T>
-Queue<T> &Queue<T>::operator+=(T &val) {
+Queue<T> &Queue<T>::operator+=(const T &val) {
     push(val);
     return *this;
 }
