@@ -35,7 +35,7 @@ template <typename T>
 bool List<T>::empty() const { return _length == 0; }
 
 template <typename T>
-void List<T>::append(T element) {
+void List<T>::append(const T &element) {
     Node<T>* oldLast = _last;
     Node<T>* newNode = new Node<T>{element};
     if (oldLast != nullptr) {
@@ -48,7 +48,7 @@ void List<T>::append(T element) {
 }
 
 template <typename T>
-void List<T>::prepend(T element) {
+void List<T>::prepend(const T &element) {
     Node<T>* oldEntry = _entry;
     auto newNode = new Node<T>{element};  // "auto" keyword automatically predict type by done operation
     if (oldEntry != nullptr) {
@@ -61,7 +61,7 @@ void List<T>::prepend(T element) {
 }
 
 template<typename T>
-void List<T>::insert(T element, size_t index) {
+void List<T>::insert(const T &element, size_t index) {
     if (index > _length) {
         throw IndexOutOfRangeException(index);
     }
@@ -101,7 +101,7 @@ T& List<T>::get(size_t index) const {
 }
 
 template<typename T>
-void List<T>::set(T& value, size_t index) {
+void List<T>::set(const T& value, size_t index) {
     if (index >= _length) {
         throw IndexOutOfRangeException(index);
     }

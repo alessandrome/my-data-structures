@@ -46,11 +46,11 @@ class List {
     ~List();
     size_t length() const;
     bool empty() const;
-    void append(T element);
-    void prepend(T element);
-    void insert(T element, size_t index);  // Index starts from 0
+    void append(const T &element);
+    void prepend(const T &element);
+    void insert(const T &element, size_t index);  // Index starts from 0
     T& get(size_t index) const;
-    void set(T& value, size_t index);
+    void set(const T& value, size_t index);
     void set(T&& value, size_t index);
     void remove(size_t index);
 
