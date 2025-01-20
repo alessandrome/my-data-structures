@@ -78,7 +78,7 @@ void myds::DoubleLinkedList<T>::insert(const T &element, size_t index) {
     } else {
         auto newNode = new Node<T>{element};
         auto prev = _entry;
-        for (size_t i = 1; i < index - 1; i++) {
+        for (size_t i = 0; i < index - 1; i++) {
             prev = prev->next();
         }
         auto next = prev->next();
