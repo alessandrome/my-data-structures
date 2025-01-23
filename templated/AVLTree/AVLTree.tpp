@@ -10,7 +10,7 @@ template<typename T>
 myds::AVLTree<T>::AVLTree(bool allowDuplicates): _root(nullptr), _size(0), _allowDuplicates(allowDuplicates) {}
 
 template<typename T>
-myds::AVLNode<T> *myds::AVLTree<T>::_insert(T &value, AVLNode<T> *root) {
+myds::AVLNode<T> *myds::AVLTree<T>::_insert(const T &value, AVLNode<T> *root) {
     if (root == nullptr) {
         return new AVLNode<T>(value);
     }
@@ -26,7 +26,7 @@ myds::AVLNode<T> *myds::AVLTree<T>::_insert(T &value, AVLNode<T> *root) {
 
 template<typename T>
 myds::AVLNode<T>* myds::AVLTree<T>::_leftRotate(AVLNode<T> *root) {
-    // A->B-> C to A<-B->C
+    // A->B->C to A<-B->C
     AVLNode<T>* right = root->right();
     root->setRight(nullptr);
     right->setLeft(root);

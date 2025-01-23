@@ -31,7 +31,7 @@ template<typename T>
 int myds::AVLNode<T>::balance() const {
     size_t lHeight = _left != nullptr ? _left->_height : 0;
     size_t rHeight = _right != nullptr ? _right->_height : 0;
-    return rHeight - lHeight;
+    return lHeight - rHeight;
 }
 
 template<typename T>

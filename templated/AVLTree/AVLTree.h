@@ -1,5 +1,6 @@
 #ifndef MY_DATA_STRUCTURES_AVLTREE_H
 #define MY_DATA_STRUCTURES_AVLTREE_H
+
 #include <iostream>
 #include <iomanip>
 #include <sstream>
@@ -9,7 +10,7 @@
 #include "AVLTreeNode.h"
 
 namespace myds {
-    template<typename T>
+    template <typename T>
     class AVLTree {
         static_assert(std::is_convertible_v<decltype(std::declval<T>() < std::declval<T>()), bool>,
                       "Type T must support < operator");
@@ -33,11 +34,12 @@ namespace myds {
         void _preOrderVisit(AVLNode<T> *) const;
         void _postOrderVisit(AVLNode<T> *) const;
 
+        AVLNode<T> *_insert(const T &value, AVLNode<T> *root);
         AVLNode<T> *_remove(const T &value, AVLNode<T> *root, bool &removed);
         size_t _height(AVLNode<T> *root) const;
 
-        AVLNode<T>* _leftRotate(AVLNode<T> *root);
-        AVLNode<T>* _rightRotate(AVLNode<T> *root);
+        AVLNode<T> *_leftRotate(AVLNode<T> *root);
+        AVLNode<T> *_rightRotate(AVLNode<T> *root);
 
         public:
         AVLTree();
@@ -77,7 +79,7 @@ namespace myds {
 
         bool allowDuplicates() const;
 
-        template<typename F>
+        template <typename F>
         friend std::ostream &operator<<(std::ostream &os, const AVLTree<F> &tree);
     };
 
