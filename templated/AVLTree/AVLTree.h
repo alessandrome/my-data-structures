@@ -23,6 +23,7 @@ namespace myds {
         AVLNode<T> *_root;
         const bool _allowDuplicates = false;
 
+        void _deconstruct(AVLNode<T> *root);
         AVLNode<T> *_findNode(const T &value, AVLNode<T> *root) const;
 
         AVLNode<T> *_findMinNode(AVLNode<T> *next, AVLNode<T> *root) const;
@@ -50,33 +51,18 @@ namespace myds {
         AVLNode<T> *_deepCopy(AVLNode<T> *otherNode);
 
         ~AVLTree();
-
-        void _deconstruct(AVLNode<T> *root);
-
         void inOrderVisit() const;
-
         void reverseInOrderVisit() const;
-
         void preOrderVisit() const;
-
         void postOrderVisit() const;
-
         void insert(T value);
-
         bool search(T value);
-
         bool remove(T value);
-
         bool isEmpty() const;
-
         size_t size() const;
-
         size_t height() const;
-
         T minValue() const;
-
         T maxValue() const;
-
         bool allowDuplicates() const;
 
         template <typename F>

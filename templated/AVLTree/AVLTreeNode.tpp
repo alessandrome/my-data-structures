@@ -6,10 +6,10 @@ template<typename T>
 myds::AVLNode<T>::AVLNode(T val): value(val), _left(nullptr), _right(nullptr), _height(0) {}
 
 template<typename T>
-void myds::AVLNode<T>::setLeft(AVLNode<T> *lNode) { _left = lNode; updateHeight(); }
+void myds::AVLNode<T>::setLeft(AVLNode<T> *lNode) { _left = lNode; }
 
 template<typename T>
-void myds::AVLNode<T>::setRight(AVLNode<T> *rNode) { _right = rNode; updateHeight(); }
+void myds::AVLNode<T>::setRight(AVLNode<T> *rNode) { _right = rNode; }
 
 template<typename T>
 myds::AVLNode<T> *myds::AVLNode<T>::left() { return _left; }

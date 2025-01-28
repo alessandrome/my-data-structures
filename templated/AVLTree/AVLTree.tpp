@@ -27,19 +27,27 @@ myds::AVLNode<T> *myds::AVLTree<T>::_insert(const T &value, AVLNode<T> *root) {
 template<typename T>
 myds::AVLNode<T>* myds::AVLTree<T>::_leftRotate(AVLNode<T> *root) {
     // A->B->C to A<-B->C
-    AVLNode<T>* right = root->right();
-    root->setRight(nullptr);
-    right->setLeft(root);
-    return right;
+    AVLNode<T>* newRoot = root->right();
+    root->setRight(newRoot->left());
+    newRoot->setLeft(root);
+
+    // Updating height of nodes (from bottom to top)
+    root->updateHeight();
+    newRoot->updateHeight();
+    return newRoot;
 }
 
 template<typename T>
 myds::AVLNode<T>* myds::AVLTree<T>::_rightRotate(AVLNode<T> *root) {
     // C<-B<-A to C<-B->A
-    AVLNode<T>* left = root->left();
-    root->setLeft(nullptr);
-    left->setRight(root);
-    return left;
+    AVLNode<T>* newRoot = root->left();
+    root->setLeft(newRoot->right());
+    newRoot->setRight(root);
+
+    // Updating height of nodes (from bottom to top)
+    root->updateHeight();
+    newRoot->updateHeight();
+    return newRoot;
 }
 
 template<typename T>
