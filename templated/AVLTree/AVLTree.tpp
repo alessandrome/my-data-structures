@@ -52,7 +52,7 @@ myds::AVLNode<T>* myds::AVLTree<T>::_rightRotate(AVLNode<T> *root) {
 
 template<typename T>
 void myds::AVLTree<T>::insert(T value) {
-    _insert(value);
+    _insert(value, _root);
 }
 
 #endif //MY_DATA_STRUCTURES_AVLTREE_TPP
