@@ -3,7 +3,7 @@
 #include "AVLTreeNode.h"
 
 template<typename T>
-myds::AVLNode<T>::AVLNode(T val): value(val), _left(nullptr), _right(nullptr), _height(0) {}
+myds::AVLNode<T>::AVLNode(T val): value(val), _left(nullptr), _right(nullptr), _height(1) {}
 
 template<typename T>
 void myds::AVLNode<T>::setLeft(AVLNode<T> *lNode) { _left = lNode; }

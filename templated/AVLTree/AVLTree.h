@@ -24,6 +24,7 @@ namespace myds {
         const bool _allowDuplicates = false;
 
         void _deconstruct(AVLNode<T> *root);
+        AVLNode<T> *_deepCopy(AVLNode<T> *otherNode);
         AVLNode<T> *_findNode(const T &value, AVLNode<T> *root) const;
 
         AVLNode<T> *_findMinNode(AVLNode<T> *next, AVLNode<T> *root) const;
@@ -47,8 +48,6 @@ namespace myds {
         AVLTree(bool allowDuplicates);
         // Deep Copy Constructor
         AVLTree(const AVLTree &other);
-
-        AVLNode<T> *_deepCopy(AVLNode<T> *otherNode);
 
         ~AVLTree();
         void inOrderVisit() const;

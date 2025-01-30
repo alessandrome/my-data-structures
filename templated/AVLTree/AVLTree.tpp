@@ -22,6 +22,32 @@ myds::AVLNode<T> *myds::AVLTree<T>::_insert(const T &value, AVLNode<T> *root) {
     } else {
         root->setRight(_insert(value, root->right()));
     }
+
+    root->updateHeight();
+    int balance = root->balance();
+
+    // Caso 1: Left-Left
+    if (balance > 1 && root->left() && value < root->left()->value)
+        return _rightRotate(root);
+
+    // Caso 2: Right-Right
+    if (balance < -1 && root->right() && value > root->right()->value)
+        return _leftRotate(root);
+
+    // Caso 3: Left-Right
+    if (balance > 1 && root->left() && value > root->left()->value) {
+        root->setLeft(_leftRotate(root->left()));
+        return _rightRotate(root);
+    }
+
+    // Caso 4: Right-Left
+    if (balance < -1 && root->right() && value < root->right()->value) {
+        root->setRight(_rightRotate(root->right()));
+        return _leftRotate(root);
+    }
+
+    // Return current root node of analyzed subtree
+    return root;
 }
 
 template<typename T>
@@ -52,7 +78,7 @@ myds::AVLNode<T>* myds::AVLTree<T>::_rightRotate(AVLNode<T> *root) {
 
 template<typename T>
 void myds::AVLTree<T>::insert(T value) {
-    _insert(value, _root);
+    _root = _insert(value, _root);
 }
 
 #endif //MY_DATA_STRUCTURES_AVLTREE_TPP
