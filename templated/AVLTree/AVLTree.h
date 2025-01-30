@@ -72,9 +72,9 @@ namespace myds {
         void reverseInOrderVisit() const;
         void preOrderVisit() const;
         void postOrderVisit() const;
-        void insert(T value);
-        bool search(T value);
-        bool remove(T value);
+        void insert(T &value);
+        bool search(const T &value);
+        bool remove(T &value);
         bool isEmpty() const;
         size_t size() const;
         size_t height() const;
