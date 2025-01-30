@@ -9,6 +9,44 @@ myds::AVLTree<T>::AVLTree(): _root(nullptr), _size(0), _allowDuplicates(false) {
 template<typename T>
 myds::AVLTree<T>::AVLTree(bool allowDuplicates): _root(nullptr), _size(0), _allowDuplicates(allowDuplicates) {}
 
+
+// ========= Find methods ==========
+
+template <typename T>
+myds::AVLNode<T> *myds::AVLTree<T>::_findMinNode(AVLNode<T> *root) const {
+    // Check if there is a valid root for the subtree
+    if (!root) return nullptr;
+
+    while (root->left()) {
+        root = root->left();
+    }
+    return root;
+}
+
+template <typename T>
+myds::AVLNode<T> *myds::AVLTree<T>::_findMaxNode(AVLNode<T> *root) const {
+    // Check if there is a valid root for the subtree
+    if (!root) return nullptr;
+
+    while (root->right()) {
+        root = root->right();
+    }
+    return root;
+}
+
+template <typename T>
+T myds::AVLTree<T>::minValue() const {
+    if (!_root) throw myds::TreeEmptyException("AVLTree::minValue()");
+    return _findMinNode(_root)->value;
+}
+
+template <typename T>
+T myds::AVLTree<T>::maxValue() const {
+    if (!_root) throw myds::TreeEmptyException("AVLTree::maxValue()");
+    return _findMaxNode(_root)->value;
+}
+
+
 template<typename T>
 myds::AVLNode<T> *myds::AVLTree<T>::_insert(const T &value, AVLNode<T> *root) {
     if (root == nullptr) {

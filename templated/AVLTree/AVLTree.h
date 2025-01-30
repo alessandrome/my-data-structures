@@ -10,6 +10,24 @@
 #include "AVLTreeNode.h"
 
 namespace myds {
+    class TreeEmptyException : public std::exception {
+        private:
+        bool _front; // True if op. done ono head, otherwise on tail
+        bool _pop; // True if op. done is a pop, otherwise a top/back (read only)
+        std::string _message;
+
+        public:
+        TreeEmptyException(std::string functionName) {
+            std::string msg;
+            std::stringstream ss_msg{msg};
+            ss_msg << "Attempted to  us \"" << functionName << "\" on empty Tree";
+            _message = ss_msg.str();
+        }
+        const char *what() const noexcept override {
+            return _message.c_str();
+        }
+    };
+
     template <typename T>
     class AVLTree {
         static_assert(std::is_convertible_v<decltype(std::declval<T>() < std::declval<T>()), bool>,
@@ -27,8 +45,8 @@ namespace myds {
         AVLNode<T> *_deepCopy(AVLNode<T> *otherNode);
         AVLNode<T> *_findNode(const T &value, AVLNode<T> *root) const;
 
-        AVLNode<T> *_findMinNode(AVLNode<T> *next, AVLNode<T> *root) const;
-        AVLNode<T> *_findMaxNode(AVLNode<T> *next, AVLNode<T> *root) const;
+        AVLNode<T> *_findMinNode(AVLNode<T> *root) const;
+        AVLNode<T> *_findMaxNode(AVLNode<T> *root) const;
         AVLNode<T> *_inOrder(AVLNode<T> *) const;
 
         void _inOrderVisit(AVLNode<T> *) const;
