@@ -197,4 +197,9 @@ bool myds::AVLTree<T>::remove(T &value) {
     return removed;
 }
 
+template <typename T>
+bool myds::AVLTree<T>::isEmpty() const {
+    return _root == nullptr;
+}
+
 #endif //MY_DATA_STRUCTURES_AVLTREE_TPP
