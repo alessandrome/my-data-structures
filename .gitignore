@@ -37,4 +37,5 @@
 
 # Build files
 build/*
+cmake-build-*/*
 !build/.gitkeep
