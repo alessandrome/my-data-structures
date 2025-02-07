@@ -9,6 +9,19 @@ myds::AVLTree<T>::AVLTree(): _root(nullptr), _size(0), _allowDuplicates(false) {
 template <typename T>
 myds::AVLTree<T>::AVLTree(bool allowDuplicates): _root(nullptr), _size(0), _allowDuplicates(allowDuplicates) {}
 
+template <typename T>
+myds::AVLTree<T>::~AVLTree() {
+    _deconstruct(_root);
+}
+
+template <typename T>
+void myds::AVLTree<T>::_deconstruct(AVLNode<T> *root) {
+    if (!root) return;
+    _deconstruct(root->left());
+    _deconstruct(root->right());
+    delete root;
+}
+
 
 // ========= Find methods ==========
 
@@ -116,7 +129,7 @@ myds::AVLNode<T> *myds::AVLTree<T>::_rightRotate(AVLNode<T> *root) {
 }
 
 template <typename T>
-void myds::AVLTree<T>::insert(T &value) {
+void myds::AVLTree<T>::insert(const T &value) {
     _root = _insert(value, _root);
 }
 
@@ -165,11 +178,11 @@ myds::AVLNode<T> *myds::AVLTree<T>::_remove(const T &value, AVLNode<T> *root, bo
 
     // Update height of the node and then apply rotations (if needed)
     root->updateHeight();
-    int balance = root->getBalance();
+    int balance = root->balance();
 
     // **Left Heavy** (balance > 1)
     if (balance > 1) {
-        if (root->left()->getBalance() >= 0) {
+        if (root->left()->balance() >= 0) {
             return _rightRotate(root); // R - Rotate
         } else {
             root->setLeft(_leftRotate(root->left())); // LR - Rotate
@@ -179,7 +192,7 @@ myds::AVLNode<T> *myds::AVLTree<T>::_remove(const T &value, AVLNode<T> *root, bo
 
     // **Right Heavy** (balance < -1)
     if (balance < -1) {
-        if (root->right()->getBalance() <= 0) {
+        if (root->right()->balance() <= 0) {
             return _leftRotate(root); // L - Rotate
         } else {
             root->setRight(_rightRotate(root->right())); // RL - Rotate
@@ -191,7 +204,7 @@ myds::AVLNode<T> *myds::AVLTree<T>::_remove(const T &value, AVLNode<T> *root, bo
 }
 
 template <typename T>
-bool myds::AVLTree<T>::remove(T &value) {
+bool myds::AVLTree<T>::remove(const T &value) {
     bool removed = false;
     _root = _remove(value, _root, removed);
     return removed;

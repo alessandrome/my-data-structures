@@ -12,12 +12,10 @@
 namespace myds {
     class TreeEmptyException : public std::exception {
         private:
-        bool _front; // True if op. done ono head, otherwise on tail
-        bool _pop; // True if op. done is a pop, otherwise a top/back (read only)
         std::string _message;
 
         public:
-        TreeEmptyException(std::string functionName) {
+        TreeEmptyException(const std::string& functionName) {
             std::string msg;
             std::stringstream ss_msg{msg};
             ss_msg << "Attempted to  us \"" << functionName << "\" on empty Tree";
@@ -72,9 +70,9 @@ namespace myds {
         void reverseInOrderVisit() const;
         void preOrderVisit() const;
         void postOrderVisit() const;
-        void insert(T &value);
+        void insert(const T &value);
         bool search(const T &value);
-        bool remove(T &value);
+        bool remove(const T &value);
         bool isEmpty() const;
         size_t size() const;
         size_t height() const;
