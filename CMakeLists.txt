@@ -72,11 +72,12 @@ add_library(my_data_structures
 # Lista dei test da compilare separatamente
 set(TEST_SOURCES
         tests/stack_tests.cpp
-        tests/templated_bstree_tests.cpp
         tests/templated_deque_tests.cpp
         tests/templated_list_tests.cpp
         tests/templated_queue_tests.cpp
         tests/templated_stack_tests.cpp
+        tests/templated_bstree_tests.cpp
+        tests/templated_avltree_tests.cpp
 )
 
 # Creare un eseguibile separato per ogni test
