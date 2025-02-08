@@ -7,25 +7,10 @@
 #include <exception>
 #include <string>
 #include <type_traits>
+#include "TreeEmptyException.h"
 #include "AVLTreeNode.h"
 
 namespace myds {
-    class TreeEmptyException : public std::exception {
-        private:
-        std::string _message;
-
-        public:
-        TreeEmptyException(const std::string& functionName) {
-            std::string msg;
-            std::stringstream ss_msg{msg};
-            ss_msg << "Attempted to  us \"" << functionName << "\" on empty Tree";
-            _message = ss_msg.str();
-        }
-        const char *what() const noexcept override {
-            return _message.c_str();
-        }
-    };
-
     template <typename T>
     class AVLTree {
         static_assert(std::is_convertible_v<decltype(std::declval<T>() < std::declval<T>()), bool>,

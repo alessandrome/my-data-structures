@@ -2,7 +2,7 @@
 #include <iomanip>
 #include <cassert>
 #include <vector>
-#include "../templated/BSTree.h"
+#include "BSTree/BSTree.h"
 
 using namespace std;
 
