@@ -22,8 +22,36 @@ void myds::AVLTree<T>::_deconstruct(AVLNode<T> *root) {
     delete root;
 }
 
+template <typename T>
+myds::AVLTree<T>::AVLTree(const AVLTree<T> &other): _allowDuplicates(other._allowDuplicates) {
+    _root = _deepCopy(other._root);
+    _size = other._size;
+}
+
+template <typename T>
+myds::AVLNode<T> *myds::AVLTree<T>::_deepCopy(AVLNode<T> *otherNode) {
+    if (!otherNode) return nullptr;
+
+    auto *newNode = new AVLNode<T>(otherNode->value);
+    newNode->setLeft(_deepCopy(otherNode->left()));
+    newNode->setRight(_deepCopy(otherNode->right()));
+    return newNode;
+}
 
 // ========= Find methods ==========
+template <typename T>
+myds::AVLNode<T> *myds::AVLTree<T>::_findNode(const T &value, AVLNode<T> *root) const {
+    // Check if there is a valid root for the subtree
+    if (!root) return nullptr;
+
+    // Check if root contains wanted value
+    if (root->value == value) return root;
+
+    if (value < root->value) {
+        return _findNode(value, root->left());
+    }
+    return _findNode(value, root->right());
+}
 
 template <typename T>
 myds::AVLNode<T> *myds::AVLTree<T>::_findMinNode(AVLNode<T> *root) const {
@@ -57,6 +85,15 @@ template <typename T>
 T myds::AVLTree<T>::maxValue() const {
     if (!_root) throw myds::TreeEmptyException("AVLTree::maxValue()");
     return _findMaxNode(_root)->value;
+}
+
+template <typename T>
+size_t myds::AVLTree<T>::_height(AVLNode<T> *root) const {
+    if (!root) return 0;
+    return 1 + std::max(
+            _height(root->left()),
+            _height(root->right())
+            );
 }
 
 // ================================
