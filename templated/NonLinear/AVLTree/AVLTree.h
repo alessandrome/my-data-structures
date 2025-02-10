@@ -7,7 +7,7 @@
 #include <exception>
 #include <string>
 #include <type_traits>
-#include "TreeEmptyException.h"
+#include "../TreeEmptyException.h"
 #include "AVLTreeNode.h"
 
 namespace myds {

@@ -101,6 +101,7 @@ size_t myds::AVLTree<T>::_height(AVLNode<T> *root) const {
 template <typename T>
 myds::AVLNode<T> *myds::AVLTree<T>::_insert(const T &value, AVLNode<T> *root) {
     if (root == nullptr) {
+        _size++;
         return new AVLNode<T>(value);
     }
     if (root->value == value && !_allowDuplicates) {
@@ -244,12 +245,33 @@ template <typename T>
 bool myds::AVLTree<T>::remove(const T &value) {
     bool removed = false;
     _root = _remove(value, _root, removed);
+    if (removed) _size--;
     return removed;
 }
 
 template <typename T>
 bool myds::AVLTree<T>::isEmpty() const {
     return _root == nullptr;
+}
+
+// ==========================================================
+// ===================== Visits =============================
+
+template <typename T>
+void myds::AVLTree<T>::inOrderVisit() const {
+    _inOrderVisit(_root);
+}
+template <typename T>
+void myds::AVLTree<T>::reverseInOrderVisit() const {
+    _reverseInOrderVisit(_root);
+}
+template <typename T>
+void myds::AVLTree<T>::preOrderVisit() const {
+    _preOrderVisit(_root);
+}
+template <typename T>
+void myds::AVLTree<T>::postOrderVisit() const {
+    _postOrderVisit(_root);
 }
 
 #endif //MY_DATA_STRUCTURES_AVLTREE_TPP
