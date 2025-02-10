@@ -250,8 +250,23 @@ bool myds::AVLTree<T>::remove(const T &value) {
 }
 
 template <typename T>
+size_t myds::AVLTree<T>::size() const {
+    return _size;
+}
+
+template <typename T>
+size_t myds::AVLTree<T>::height() const {
+    return _root ? _root->height() : 0;
+}
+
+template <typename T>
 bool myds::AVLTree<T>::isEmpty() const {
     return _root == nullptr;
+}
+
+template <typename T>
+bool myds::AVLTree<T>::allowDuplicates() const {
+    return _allowDuplicates;
 }
 
 // ==========================================================
