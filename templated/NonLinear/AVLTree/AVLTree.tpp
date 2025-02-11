@@ -339,7 +339,21 @@ template <typename T>
 
 template <typename T>
 std::ostream &operator<<(std::ostream &os, const myds::AVLTree<T> &tree) {
-    return os;
+    // Get array of ordered values - Space Complexity O(N)
+    auto values = tree.inOrderValues();
+    size_t size = tree.size();
+    std::string msg;
+    std::stringstream ss_msg{msg};
+    ss_msg << "[";
+    for (int i=0; i<size; i++) {
+        ss_msg << values[i];
+        if (i != size - 1) {
+            ss_msg << ", ";
+        }
+    }
+    ss_msg << "]";
+    delete[] values;
+    return os << msg;
 }
 
 #endif //MY_DATA_STRUCTURES_AVLTREE_TPP
