@@ -1,6 +1,7 @@
 #ifndef MY_DATA_STRUCTURES_AVLTREE_TPP
 #define MY_DATA_STRUCTURES_AVLTREE_TPP
 
+#include <iostream>
 #include "AVLTree.h"
 
 template <typename T>
@@ -96,7 +97,7 @@ size_t myds::AVLTree<T>::_height(AVLNode<T> *root) const {
             );
 }
 
-// ================================
+// ================================================================
 
 template <typename T>
 myds::AVLNode<T> *myds::AVLTree<T>::_insert(const T &value, AVLNode<T> *root) {
@@ -273,6 +274,35 @@ bool myds::AVLTree<T>::allowDuplicates() const {
 // ===================== Visits =============================
 
 template <typename T>
+void myds::AVLTree<T>::_inOrderVisit(AVLNode<T> *root) const {
+    if (!root) return;
+    _inOrderVisit(root->left());
+    std::cout << std::setw(5) << root->value;
+    _inOrderVisit(root->right());
+}
+template <typename T>
+void myds::AVLTree<T>::_reverseInOrderVisit(AVLNode<T> *root) const {
+    if (!root) return;
+    _reverseInOrderVisit(root->right());
+    std::cout << std::setw(5) << root->value;
+    _reverseInOrderVisit(root->left());
+}
+template <typename T>
+void myds::AVLTree<T>::_preOrderVisit(AVLNode<T> *root) const {
+    if (!root) return;
+    std::cout << std::setw(5) << root->value;
+    _preOrderVisit(root->left());
+    _preOrderVisit(root->right());
+}
+template <typename T>
+void myds::AVLTree<T>::_postOrderVisit(AVLNode<T> *root) const {
+    if (!root) return;
+    _postOrderVisit(root->left());
+    _postOrderVisit(root->right());
+    std::cout << std::setw(5) << root->value;
+}
+
+template <typename T>
 void myds::AVLTree<T>::inOrderVisit() const {
     _inOrderVisit(_root);
 }
@@ -287,6 +317,29 @@ void myds::AVLTree<T>::preOrderVisit() const {
 template <typename T>
 void myds::AVLTree<T>::postOrderVisit() const {
     _postOrderVisit(_root);
+}
+
+template <typename T>
+void myds::AVLTree<T>::_inOrderValues(AVLNode<T> *root, T* arr, size_t &pos) const {
+    if (!root) return;
+    _inOrderValues(root->left(), arr, pos);
+    arr[pos++] = root->value;
+    _inOrderValues(root->right(), arr, pos);
+}
+template <typename T>
+[[nodiscard]] T *myds::AVLTree<T>::inOrderValues() const {
+    T *values = new T[_size];
+    size_t pos = 0;
+    _inOrderValues(_root, values, pos);
+    return values;
+}
+
+// ==========================================================
+// ===================== Friend =============================
+
+template <typename T>
+std::ostream &operator<<(std::ostream &os, const myds::AVLTree<T> &tree) {
+    return os;
 }
 
 #endif //MY_DATA_STRUCTURES_AVLTREE_TPP
