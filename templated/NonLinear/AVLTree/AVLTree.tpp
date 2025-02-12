@@ -334,6 +334,36 @@ template <typename T>
     return values;
 }
 
+template <typename T>
+void myds::AVLTree<T>::_preOrderValues(AVLNode<T> *root, T* arr, size_t &pos) const {
+    if (!root) return;
+    arr[pos++] = root->value;
+    _postOrderValues(root->left(), arr, pos);
+    _postOrderValues(root->right(), arr, pos);
+}
+template <typename T>
+[[nodiscard]] T *myds::AVLTree<T>::preOrderValues() const {
+    T *values = new T[_size];
+    size_t pos = 0;
+    _preOrderValues(_root, values, pos);
+    return values;
+}
+
+template <typename T>
+void myds::AVLTree<T>::_postOrderValues(AVLNode<T> *root, T* arr, size_t &pos) const {
+    if (!root) return;
+    _postOrderValues(root->left(), arr, pos);
+    _postOrderValues(root->right(), arr, pos);
+    arr[pos++] = root->value;
+}
+template <typename T>
+[[nodiscard]] T *myds::AVLTree<T>::postOrderValues() const {
+    T *values = new T[_size];
+    size_t pos = 0;
+    _postOrderValues(_root, values, pos);
+    return values;
+}
+
 // ==========================================================
 // ===================== Friend =============================
 

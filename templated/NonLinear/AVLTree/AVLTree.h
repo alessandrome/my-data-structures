@@ -37,8 +37,8 @@ namespace myds {
         void _preOrderVisit(AVLNode<T> *) const;
         void _postOrderVisit(AVLNode<T> *) const;
         void _inOrderValues(AVLNode<T>*, T*, size_t&) const;
-        void _preOrderValues(AVLNode<T>*, T*, size_t) const;
-        void _postOrderValues(AVLNode<T>*, T*, size_t) const;
+        void _preOrderValues(AVLNode<T>*, T*, size_t&) const;
+        void _postOrderValues(AVLNode<T>*, T*, size_t&) const;
 
         AVLNode<T> *_insert(const T &value, AVLNode<T> *root);
         AVLNode<T> *_remove(const T &value, AVLNode<T> *root, bool &removed);
@@ -59,6 +59,8 @@ namespace myds {
         void preOrderVisit() const;
         void postOrderVisit() const;
         [[nodiscard]] T *inOrderValues() const;
+        [[nodiscard]] T *preOrderValues() const;
+        [[nodiscard]] T *postOrderValues() const;
         void insert(const T &value);
         bool search(const T &value);
         bool remove(const T &value);
