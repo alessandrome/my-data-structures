@@ -30,7 +30,6 @@ namespace myds {
 
         AVLNode<T> *_findMinNode(AVLNode<T> *root) const;
         AVLNode<T> *_findMaxNode(AVLNode<T> *root) const;
-        AVLNode<T> *_inOrder(AVLNode<T> *) const;
 
         void _inOrderVisit(AVLNode<T> *) const;
         void _reverseInOrderVisit(AVLNode<T> *) const;
