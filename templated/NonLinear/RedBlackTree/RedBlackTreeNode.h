@@ -11,8 +11,8 @@ namespace myds {
         public:
         T value;
         RedBlackTreeNode(T &value);
-        RedBlackTreeNode *left();
-        RedBlackTreeNode *right();
+        RedBlackTreeNode *left() const;
+        RedBlackTreeNode *right() const;
         void setLeft(RedBlackTreeNode *);
         void setRight(RedBlackTreeNode *);
     };

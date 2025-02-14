@@ -13,4 +13,20 @@ namespace myds {
     RedBlackTree<T>::~RedBlackTree() {
         _deepDelete(_root);
     }
+
+    template <typename T>
+    RedBlackTree<T> *RedBlackTree<T>::_deepCopy(const RedBlackTreeNode<T> *root) {
+        if (!root) return nullptr;
+        _deepCopy(root->left());
+        _deepCopy(root->right());
+        return root;
+    }
+
+    template <typename T>
+    void RedBlackTree<T>::_deepDelete(RedBlackTreeNode<T> *root) {
+        if (!root) return;
+        _deepDelete(root->left());
+        _deepDelete(root->right());
+        delete root;
+    }
 } // myds

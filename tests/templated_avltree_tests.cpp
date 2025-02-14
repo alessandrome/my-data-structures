@@ -2,7 +2,8 @@
 #include <iomanip>
 #include <cassert>
 #include <vector>
-#include "../templated/AVLTree/AVLTree.h"
+#include <gtest/gtest.h>
+#include "../templated/NonLinear/AVLTree/AVLTree.h"
 
 using namespace std;
 

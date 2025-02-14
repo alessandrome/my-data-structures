@@ -2,7 +2,8 @@
 #include <iomanip>
 #include <cassert>
 #include <vector>
-#include "BSTree/BSTree.h"
+
+#include "../templated/NonLinear/BSTree/BSTree.h"
 
 using namespace std;
 

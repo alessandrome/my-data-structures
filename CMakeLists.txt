@@ -63,6 +63,9 @@ project(my_data_structures)
 # Abilita il supporto ai test in CMake
 enable_testing()
 
+# Find GoogleTest installed by vcpkg
+find_package(GTest CONFIG REQUIRED)
+
 # Aggiungi una libreria per le strutture dati
 add_library(my_data_structures
         basic/List.cpp
@@ -84,6 +87,6 @@ set(TEST_SOURCES
 foreach(TEST_SRC ${TEST_SOURCES})
     get_filename_component(TEST_NAME ${TEST_SRC} NAME_WE)
     add_executable(${TEST_NAME} ${TEST_SRC})
-    target_link_libraries(${TEST_NAME} my_data_structures)
+    target_link_libraries(${TEST_NAME} my_data_structures GTest::gtest GTest::gtest_main GTest::gmock GTest::gmock_main)
     add_test(NAME ${TEST_NAME} COMMAND ${TEST_NAME})
 endforeach()

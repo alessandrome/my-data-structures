@@ -73,9 +73,8 @@ namespace myds {
         template <typename F>
         friend std::ostream &operator<<(std::ostream &os, const AVLTree<F> &tree);
     };
+}
 
 #include "AVLTree.tpp"
-
-}
 
 #endif //MY_DATA_STRUCTURES_AVLTREE_H
