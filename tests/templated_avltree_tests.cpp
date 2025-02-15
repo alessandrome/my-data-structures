@@ -23,6 +23,29 @@ TEST(AVLTreeTest, EmptyTree) {
     EXPECT_EQ(t1.allowDuplicates(), false);
 }
 
+TEST(AVLTreeTest, EmptyTreeAllowDuplicates) {
+    myds::AVLTree<int> t1(true);
+    EXPECT_EQ(t1.size(), 0);
+    EXPECT_EQ(t1.height(), 0);
+    EXPECT_EQ(t1.allowDuplicates(), true);
+}
+
+TEST(AVLTreeTest, AddNode) {
+    myds::AVLTree<int> t1;
+    EXPECT_EQ(t1.size(), 0);
+    EXPECT_EQ(t1.height(), 0);
+    EXPECT_EQ(t1.allowDuplicates(), false);
+    t1.insert(5);
+    EXPECT_EQ(t1.size(), 1);
+    EXPECT_EQ(t1.height(), 1);
+    t1.insert(10);
+    EXPECT_EQ(t1.size(), 2);
+    EXPECT_EQ(t1.height(), 2);
+    t1.insert(2);
+    EXPECT_EQ(t1.size(), 3);
+    EXPECT_EQ(t1.height(), 2);
+}
+
 bool test_new_tree() {
     try {
         myds::AVLTree<int> t1{};
