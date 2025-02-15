@@ -44,9 +44,31 @@ TEST(AVLTreeTest, AddNode) {
     t1.insert(2);
     EXPECT_EQ(t1.size(), 3);
     EXPECT_EQ(t1.height(), 2);
+    t1.insert(2);
+    EXPECT_EQ(t1.size(), 3);
+    EXPECT_EQ(t1.height(), 2);
 }
 
-TEST(AVLTreeTest, Balancing) {
+TEST(AVLTreeTest, AddDuplicates) {
+    myds::AVLTree<int> t1{true};
+    EXPECT_EQ(t1.size(), 0);
+    EXPECT_EQ(t1.height(), 0);
+    EXPECT_EQ(t1.allowDuplicates(), true);
+    t1.insert(5);
+    EXPECT_EQ(t1.size(), 1);
+    EXPECT_EQ(t1.height(), 1);
+    t1.insert(10);
+    EXPECT_EQ(t1.size(), 2);
+    EXPECT_EQ(t1.height(), 2);
+    t1.insert(2);
+    EXPECT_EQ(t1.size(), 3);
+    EXPECT_EQ(t1.height(), 2);
+    t1.insert(2);
+    EXPECT_EQ(t1.size(), 4);
+    EXPECT_EQ(t1.height(), 3);
+}
+
+TEST(AVLTreeTest, BalancingRight) {
     myds::AVLTree<int> t1;
     EXPECT_EQ(t1.size(), 0);
     EXPECT_EQ(t1.height(), 0);
@@ -68,61 +90,26 @@ TEST(AVLTreeTest, Balancing) {
     EXPECT_EQ(t1.height(), 3);
 }
 
-bool test_new_tree() {
-    try {
-        myds::AVLTree<int> t1{};
-        myds::AVLTree<int> t2{true};
-        assert(t1.size() == 0);
-        assert(t1.height() == 0);
-        assert(t1.allowDuplicates() == false);
-        assert(t2.size() == 0);
-        assert(t2.height() == 0);
-        assert(t2.allowDuplicates() == true);
-    } catch (...) {
-        return false;
-    }
-    return true;
-}
-
-bool test_add() {
-    try {
-        myds::AVLTree<int> t1{};
-        assert(t1.size() == 0);
-        assert(t1.height() == 0);
-        assert(t1.allowDuplicates() == false);
-        t1.insert(5);
-        assert(t1.size() == 1);
-        assert(t1.height() == 1);
-        t1.insert(10);
-        assert(t1.size() == 2);
-        assert(t1.height() == 2);
-        t1.insert(2);
-        assert(t1.size() == 3);
-        assert(t1.height() == 2);
-        // No duplicates
-        t1.insert(2);
-        assert(t1.size() == 3);
-        assert(t1.height() == 2);
-        myds::AVLTree<int> t2{true};
-        assert(t2.size() == 0);
-        assert(t2.height() == 0);
-        assert(t2.allowDuplicates() == true);
-        t2.insert(5);
-        assert(t2.size() == 1);
-        assert(t2.height() == 1);
-        t2.insert(10);
-        assert(t2.size() == 2);
-        assert(t2.height() == 2);
-        t2.insert(2);
-        assert(t2.size() == 3);
-        assert(t2.height() == 2);
-        t2.insert(2);
-        assert(t2.size() == 4);
-        assert(t2.height() == 3);
-    } catch (...) {
-        return false;
-    }
-    return true;
+TEST(AVLTreeTest, BalancingLeft) {
+    myds::AVLTree<int> t1;
+    EXPECT_EQ(t1.size(), 0);
+    EXPECT_EQ(t1.height(), 0);
+    EXPECT_EQ(t1.allowDuplicates(), false);
+    t1.insert(50);
+    EXPECT_EQ(t1.size(), 1);
+    EXPECT_EQ(t1.height(), 1);
+    t1.insert(40);
+    EXPECT_EQ(t1.size(), 2);
+    EXPECT_EQ(t1.height(), 2);
+    t1.insert(20);
+    EXPECT_EQ(t1.size(), 3);
+    EXPECT_EQ(t1.height(), 2);
+    t1.insert(10);
+    EXPECT_EQ(t1.size(), 4);
+    EXPECT_EQ(t1.height(), 3);
+    t1.insert(5);
+    EXPECT_EQ(t1.size(), 5);
+    EXPECT_EQ(t1.height(), 3);
 }
 
 bool test_find() {
