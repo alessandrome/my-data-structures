@@ -16,6 +16,13 @@ myds::AVLTree<int> createTestBSTree() {
     return tree;
 }
 
+TEST(AVLTreeTest, EmptyTree) {
+    myds::AVLTree<int> t1;
+    EXPECT_EQ(t1.size(), 0);
+    EXPECT_EQ(t1.height(), 0);
+    EXPECT_EQ(t1.allowDuplicates(), false);
+}
+
 bool test_new_tree() {
     try {
         myds::AVLTree<int> t1{};
@@ -127,24 +134,24 @@ bool test_max() {
 }
 
 // From root folder
-int main() {
-    int total = 0, passed = 0;
-    bool test = test_new_tree();
-    total++; passed += test;
-    cout << "[" << (test ? "OK" : "ERR") << "] test_new_tree()" << endl;
-
-    test = test_add();
-    total++; passed += test;
-    cout << "[" << (test ? "OK" : "ERR") << "] test_add()" << endl;
-
-    test = test_find();
-    total++; passed += test;
-    cout << "[" << (test ? "OK" : "ERR") << "] test_find()" << endl;
-
-    test = test_remove();
-    total++; passed += test;
-    cout << "[" << (test ? "OK" : "ERR") << "] test_remove()" << endl;
-
-    cout << "[" << passed << "/" << total << "] Passed/Total" << endl;
-    return 0;
-}
+//int main() {
+//    int total = 0, passed = 0;
+//    bool test = test_new_tree();
+//    total++; passed += test;
+//    cout << "[" << (test ? "OK" : "ERR") << "] test_new_tree()" << endl;
+//
+//    test = test_add();
+//    total++; passed += test;
+//    cout << "[" << (test ? "OK" : "ERR") << "] test_add()" << endl;
+//
+//    test = test_find();
+//    total++; passed += test;
+//    cout << "[" << (test ? "OK" : "ERR") << "] test_find()" << endl;
+//
+//    test = test_remove();
+//    total++; passed += test;
+//    cout << "[" << (test ? "OK" : "ERR") << "] test_remove()" << endl;
+//
+//    cout << "[" << passed << "/" << total << "] Passed/Total" << endl;
+//    return 0;
+//}
