@@ -138,28 +138,18 @@ TEST(AVLTreeTest, Remove) {
     EXPECT_EQ(t1.size(), startSize - 3);
 }
 
-bool test_min() {
-    try {
-        myds::AVLTree<int> t1 = createTestBSTree();
-        assert(t1.minValue() == 10);
-        t1.remove(10);
-        assert(t1.minValue() == 12);
-    } catch (...) {
-        return false;
-    }
-    return true;
+TEST(AVLTreeTest, MinValue) {
+    myds::AVLTree<int> t1 = createTestBSTree();
+    EXPECT_EQ(t1.minValue(), 10);
+    t1.remove(10);
+    EXPECT_EQ(t1.minValue(), 12);
 }
 
-bool test_max() {
-    try {
-        myds::AVLTree<int> t1 = createTestBSTree();
-        assert(t1.maxValue() == 90);
-        t1.remove(90);
-        assert(t1.minValue() == 80);
-    } catch (...) {
-        return false;
-    }
-    return true;
+TEST(AVLTreeTest, MaxValue) {
+    myds::AVLTree<int> t1 = createTestBSTree();
+    EXPECT_EQ(t1.maxValue(), 90);
+    t1.remove(90);
+    EXPECT_EQ(t1.maxValue(), 80);
 }
 
 // From root folder
