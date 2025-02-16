@@ -112,18 +112,13 @@ TEST(AVLTreeTest, BalancingLeft) {
     EXPECT_EQ(t1.height(), 3);
 }
 
-bool test_find() {
-    try {
-        myds::AVLTree<int> t1 = createTestBSTree();
-        assert(t1.search(50));
-        assert(t1.search(10));
-        assert(t1.search(12));
-        assert(!t1.search(13));
-        assert(!t1.search(77));
-    } catch (...) {
-        return false;
-    }
-    return true;
+TEST(AVLTreeTest, Find) {
+    myds::AVLTree<int> t1 = createTestBSTree();
+    EXPECT_EQ(t1.search(50), true);
+    EXPECT_EQ(t1.search(10), true);
+    EXPECT_EQ(t1.search(12), true);
+    EXPECT_EQ(t1.search(13), false);
+    EXPECT_EQ(t1.search(77), false);
 }
 
 bool test_remove() {
