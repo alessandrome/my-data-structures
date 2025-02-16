@@ -121,19 +121,22 @@ TEST(AVLTreeTest, Find) {
     EXPECT_EQ(t1.search(77), false);
 }
 
-bool test_remove() {
-    try {
-        myds::AVLTree<int> t1 = createTestBSTree();
-        assert(t1.remove(50));
-        assert(!t1.remove(50));
-        assert(t1.remove(10));
-        assert(t1.remove(12));
-        assert(!t1.remove(13));
-        assert(!t1.remove(77));
-    } catch (...) {
-        return false;
-    }
-    return true;
+TEST(AVLTreeTest, Remove) {
+    myds::AVLTree<int> t1 = createTestBSTree();
+    size_t startSize = t1.size();
+    EXPECT_EQ(t1.remove(50), true);
+    EXPECT_EQ(t1.size(), startSize - 1);
+    EXPECT_EQ(t1.remove(50), false);
+
+    EXPECT_EQ(t1.size(), startSize - 1);
+    EXPECT_EQ(t1.remove(10), true);
+    EXPECT_EQ(t1.size(), startSize - 2);
+    EXPECT_EQ(t1.remove(12), true);
+    EXPECT_EQ(t1.size(), startSize - 3);
+    EXPECT_EQ(t1.remove(13), false);
+    EXPECT_EQ(t1.size(), startSize - 3);
+    EXPECT_EQ(t1.remove(77), false);
+    EXPECT_EQ(t1.size(), startSize - 3);
 }
 
 bool test_min() {
