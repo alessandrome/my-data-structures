@@ -151,26 +151,3 @@ TEST(AVLTreeTest, MaxValue) {
     t1.remove(90);
     EXPECT_EQ(t1.maxValue(), 80);
 }
-
-// From root folder
-//int main() {
-//    int total = 0, passed = 0;
-//    bool test = test_new_tree();
-//    total++; passed += test;
-//    cout << "[" << (test ? "OK" : "ERR") << "] test_new_tree()" << endl;
-//
-//    test = test_add();
-//    total++; passed += test;
-//    cout << "[" << (test ? "OK" : "ERR") << "] test_add()" << endl;
-//
-//    test = test_find();
-//    total++; passed += test;
-//    cout << "[" << (test ? "OK" : "ERR") << "] test_find()" << endl;
-//
-//    test = test_remove();
-//    total++; passed += test;
-//    cout << "[" << (test ? "OK" : "ERR") << "] test_remove()" << endl;
-//
-//    cout << "[" << passed << "/" << total << "] Passed/Total" << endl;
-//    return 0;
-//}
