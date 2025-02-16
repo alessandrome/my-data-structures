@@ -127,7 +127,6 @@ TEST(AVLTreeTest, Remove) {
     EXPECT_EQ(t1.remove(50), true);
     EXPECT_EQ(t1.size(), startSize - 1);
     EXPECT_EQ(t1.remove(50), false);
-
     EXPECT_EQ(t1.size(), startSize - 1);
     EXPECT_EQ(t1.remove(10), true);
     EXPECT_EQ(t1.size(), startSize - 2);
