@@ -4,20 +4,25 @@
 #include <cstddef>
 
 namespace myds {
+	constexpr size_t default_capacity = 10;
     template <typename T>
     class Vector {
         private:
-        size_t _size;
-        size_t _capacity;
-		size_t _head;  // Head index
-		size_t _tail;  // Tail index
-        T *data;
+        size_t _size{};
+        size_t _capacity{};
+		size_t _head{};  // Head index
+		size_t _tail{};  // Tail index
+        T *_array;
+    	void _deepCopy(const Vector &);
+    	void _incrementSize(size_t);
 
         public:
         Vector();
         Vector(size_t capacity);
+        Vector(const Vector &);
         ~Vector();
 		size_t length() const;
+		size_t capacity() const;
     	bool empty() const;
     	void append(const T &element);
     	void prepend(const T &element);
@@ -25,6 +30,11 @@ namespace myds {
     	T& get(size_t index) const;
     	void set(const T& value, size_t index);
     	void remove(size_t index);
+
+    	Vector& operator+=(const Vector &rVec);
+    	Vector& operator+=(const T &rVec);
+    	Vector& operator=(const Vector &rVec);
+    	friend std::ostream& operator<<(std::ostream &os, const Vector &rVec);
     };
 } // myds
 

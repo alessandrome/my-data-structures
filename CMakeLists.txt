@@ -22,6 +22,7 @@ find_package(GTest CONFIG REQUIRED)
 set(TEST_SOURCES
         tests/templated_deque_tests.cpp
         tests/templated_list_tests.cpp
+        tests/templated_vector_tests.cpp
         tests/templated_queue_tests.cpp
         tests/templated_stack_tests.cpp
         tests/templated_bstree_tests.cpp
