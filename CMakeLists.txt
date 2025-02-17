@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.30)
+cmake_minimum_required(VERSION 3.28)
 #project(my_data_structures)
 
 set(CMAKE_CXX_STANDARD 17)
