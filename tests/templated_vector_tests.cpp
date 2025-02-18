@@ -9,7 +9,7 @@ using myds::Vector;
 TEST(Vector, DefaultVector) {
     Vector<int> emptyVec;
     ASSERT_EQ(emptyVec.length(), 0);
-    ASSERT_EQ(emptyVec.capacity(), myds::default_capacity);
+    ASSERT_EQ(emptyVec.capacity(), myds::DEFAULT_VECTOR_CAPACITY);
 }
 
 // From root folder

@@ -1,3 +1,6 @@
+#include <array>
+#include <array>
+
 #include "Vector.h"
 
 namespace myds {
@@ -31,10 +34,44 @@ namespace myds {
     }
 
     template <typename T>
+    void Vector<T>::_incrementSize(size_t increment) {
+        auto oldArray = _array;
+        _array = new T[_capacity + increment];
+        for (size_t i = 0; i < _size; ++i) {
+            _array[i] = oldArray[(_head + i) % _capacity];
+        }
+        delete[] oldArray;
+        _head = 0;
+        _tail = _size;
+        _capacity += increment;
+    }
+
+
+    template <typename T>
     size_t Vector<T>::length() const { return _size; }
 
     template <typename T>
     bool Vector<T>::empty() const { return _size == 0; }
+
+    template <typename T>
+    void Vector<T>::append(const T &element) {
+        if (_size == _capacity) {
+            _incrementSize(_capacity ? _capacity : DEFAULT_VECTOR_CAPACITY);
+        }
+        _array[_tail] = element;
+        _tail = (_tail + 1) % _capacity;
+        _size++;
+    }
+
+    template <typename T>
+    void Vector<T>::prepend(const T &element) {
+        if (_size == _capacity) {
+            _incrementSize(_capacity ? _capacity : DEFAULT_VECTOR_CAPACITY);
+        }
+        _head = _head == 0 ? _capacity - 1 : _head - 1;
+        _array[_head] = element;
+        _size++;
+    }
 
 
     template <typename T>

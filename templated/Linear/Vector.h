@@ -4,7 +4,7 @@
 #include <cstddef>
 
 namespace myds {
-	constexpr size_t default_capacity = 10;
+	constexpr size_t DEFAULT_VECTOR_CAPACITY = 8;
     template <typename T>
     class Vector {
         private:
