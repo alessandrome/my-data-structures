@@ -28,6 +28,13 @@ namespace myds {
     }
 
     template <typename T>
+    size_t Vector<T>::length() const { return _size; }
+
+    template<typename T>
+    bool Vector <T>::empty() const { return _size == 0; }
+
+
+    template <typename T>
     Vector<T> &Vector<T>::operator=(const Vector &rVec) {
         if (this != &rVec) {
             delete[] _array;
