@@ -46,9 +46,11 @@ namespace myds {
         _capacity += increment;
     }
 
-
     template <typename T>
     size_t Vector<T>::length() const { return _size; }
+
+    template <typename T>
+    size_t Vector<T>::capacity() const { return _capacity; }
 
     template <typename T>
     bool Vector<T>::empty() const { return _size == 0; }
@@ -87,7 +89,7 @@ namespace myds {
 
         if (index == 0) {
             // Simplify code to avoid unnecessary moving elements
-            _head = _head  ? _head - 1 : _capacity - 1;
+            _head = _head ? _head - 1 : _capacity - 1;
             _array[_head] = element;
         } else {
             // Cycle to move all elements by one position and make space for the element to insert
