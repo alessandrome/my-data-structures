@@ -1,5 +1,5 @@
 #include <array>
-#include <array>
+#include <string>
 
 #include "Vector.h"
 
@@ -70,6 +70,39 @@ namespace myds {
         }
         _head = _head == 0 ? _capacity - 1 : _head - 1;
         _array[_head] = element;
+        _size++;
+    }
+
+    template <typename T>
+    void Vector<T>::insert(const T &element, size_t index) {
+        if (index > _size) {
+            std::string msg = "Vector::insert: index ";
+            msg += std::to_string(index);
+            msg += " is out of range";
+            throw std::out_of_range(msg);
+        }
+        if (_size == _capacity) {
+            _incrementSize(_capacity ? _capacity : DEFAULT_VECTOR_CAPACITY);
+        }
+
+        if (index == 0) {
+            // Simplify code to avoid unnecessary moving elements
+            _head = _head  ? _head - 1 : _capacity - 1;
+            _array[_head] = element;
+        } else {
+            // Cycle to move all elements by one position and make space for the element to insert
+            size_t circularIndex = (_head + index) % _capacity;
+            size_t i = _tail;
+            size_t prev = i ? i - 1 : _capacity - 1;
+            while (i != circularIndex) {
+                _array[i] = _array[prev];
+                i = i ? i - 1 : _capacity - 1;
+                prev = i ? i - 1 : _capacity - 1;
+            }
+            _array[circularIndex] = element;
+            _tail = (_tail + 1) % _capacity;
+        }
+        // Update size 'n' tail
         _size++;
     }
 
