@@ -5,7 +5,8 @@
 
 namespace myds {
     template <class T>
-    Vector<T>::Vector(): _size(0), _capacity(0), _head(0), _tail(0), _array(nullptr) {
+    Vector<T>::Vector(): _size(0), _capacity(DEFAULT_VECTOR_CAPACITY), _head(0), _tail(0), _array(nullptr) {
+        _array = new T[_capacity];
     }
 
     template <class T>
