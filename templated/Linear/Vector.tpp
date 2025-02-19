@@ -109,6 +109,42 @@ namespace myds {
         _size++;
     }
 
+    template <typename T>
+    T &Vector<T>::get(size_t index) const {
+        if (index >= _size) {
+            std::string msg = "Vector::insert: index ";
+            msg += std::to_string(index);
+            msg += " is out of range";
+            throw std::out_of_range(msg);
+        }
+        return _array[(_head + index) % _capacity];
+    }
+
+    template <typename T>
+    void Vector<T>::set(const T &value, size_t index) {
+        if (index >= _size) {
+            std::string msg = "Vector::insert: index ";
+            msg += std::to_string(index);
+            msg += " is out of range";
+            throw std::out_of_range(msg);
+        }
+        _array[(_head + index) % _capacity] = value;
+    }
+
+    template <typename T>
+    void Vector<T>::remove(size_t index) {
+        if (index >= _size) {
+            std::string msg = "Vector::insert: index ";
+            msg += std::to_string(index);
+            msg += " is out of range";
+            throw std::out_of_range(msg);
+        }
+        for (size_t i = index; i < _size - 1; ++i) {
+            _array[(_head + i) % _capacity] = _array[(_head + i + 1) % _capacity];
+        }
+        _tail = (_tail + _capacity - 1) % _capacity;;
+        _size--;
+    }
 
     template <typename T>
     Vector<T> &Vector<T>::operator=(const Vector &rVec) {
@@ -117,5 +153,30 @@ namespace myds {
             _deepCopy(rVec);
         }
         return *this;
+    }
+
+    template <typename T>
+    Vector<T> &Vector<T>::operator+=(const T &rVec) {
+        // TODO
+        return *this;
+    }
+
+    template <typename T>
+    Vector<T> &Vector<T>::operator+=(const Vector &rVec) {
+        // TODO: concatenate
+        return *this;
+    }
+
+    template <typename T>
+    std::ostream &operator<<(std::ostream &os, const Vector<T> &rVec) {
+        os << '[';
+        for (size_t i = 0; i < rVec._size; ++i) {
+            os << rVec.get(i);
+            if (i != rVec._size - 1) {
+                os << ", ";
+            }
+        }
+        os << ']';
+        return os;
     }
 } // myds
