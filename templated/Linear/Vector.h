@@ -1,6 +1,7 @@
 #ifndef VECTOR_H
 #define VECTOR_H
 
+#include <iostream>
 #include <cstddef>
 
 namespace myds {
@@ -36,7 +37,9 @@ namespace myds {
         Vector &operator+=(const Vector &rVec);
         Vector &operator+=(const T &rVec);
         Vector &operator=(const Vector &rVec);
-        friend std::ostream &operator<<(std::ostream &os, const Vector &rVec);
+
+        template<typename F>
+        friend std::ostream &operator<<(std::ostream &os, const Vector<F> &rVec);
     };
 } // myds
 
