@@ -15,6 +15,7 @@ Vector<int> createVector() {
 }
 
 const std::string EXPECTED_STR = "[0, 1, 2, 3, 4, 5, 6]";
+const std::string EXPECTED_STR_2 = "[0, 1, 2, 3, 4, 5, 6, 100, 101]";
 
 TEST(VectorTest, DefaultVector) {
     Vector<int> emptyVec;
@@ -58,6 +59,31 @@ TEST(VectorTest, IncreaseCapacity) {
     ASSERT_EQ(v1.capacity(), capacity);
     v1.append(101);
     ASSERT_EQ(v1.capacity(), capacity * 2);
+}
+
+TEST(VectorTest, PlusEqualValueOperator) {
+    Vector<int> v1 = createVector();
+    size_t capacity = v1.capacity();
+    v1 += 100;
+    ASSERT_EQ(v1.capacity(), capacity);
+    v1 += 101;
+    ASSERT_EQ(v1.capacity(), capacity * 2);
+    std::stringstream ss;
+    ss << v1;
+    ASSERT_EQ(ss.str(), EXPECTED_STR_2);
+}
+
+TEST(VectorTest, PlusEqualVectorOperatorWithResize) {
+    Vector<int> v1 = createVector();
+    Vector<int> v2;
+    v2.append(100);
+    v2.append(101);
+    size_t capacity = v1.capacity();
+    v1 += v2;
+    ASSERT_EQ(v1.capacity(), capacity + v2.capacity());
+    std::stringstream ss;
+    ss << v1;
+    ASSERT_EQ(ss.str(), EXPECTED_STR_2);
 }
 
 TEST(VectorTest, Stream) {

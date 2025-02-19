@@ -169,7 +169,7 @@ namespace myds {
         // Check total size and increment array space if needed
         size_t totalSize = _size + rVec._size;
         if (totalSize > _capacity) {
-            _incrementSize(totalSize);
+            _incrementSize(rVec._capacity);
         }
 
         // Add element from the right Vector
