@@ -1,43 +1,53 @@
 #include <iostream>
 #include <iomanip>
+#include <sstream>
 #include <gtest/gtest.h>
 #include "../templated/Linear/Vector.h"
 
 using namespace std;
 using myds::Vector;
 
-TEST(Vector, DefaultVector) {
+Vector<int> createVector() {
+    Vector<int> rVec;
+    for (int i = 0; i < myds::DEFAULT_VECTOR_CAPACITY - 1; i++)
+        rVec.append(i);
+    return rVec;
+}
+
+const std::string EXPECTED_STR = "[0, 1, 2, 3, 4, 5, 6]";
+
+TEST(VectorTest, DefaultVector) {
     Vector<int> emptyVec;
     ASSERT_EQ(emptyVec.length(), 0);
     ASSERT_EQ(emptyVec.capacity(), myds::DEFAULT_VECTOR_CAPACITY);
 }
 
-// From root folder
-int main() {
-    double topVal = 0;
-    List<int> list{};
-    std::cout << std::fixed << std::setprecision(3);
-    list.append(1);
-    cout << "Length: " << list.length() << " - " << list << endl;  // [1, 2]
-    list.append(2);
-    cout << "Length: " << list.length() << " - " << list << endl;  // [1, 2]
-    list.prepend(3);
-    cout << "Length: " << list.length() << " - " << list << endl;  // [3, 1, 2]
-    list.insert(4, 1);
-    cout << "Length: " << list.length() << " - " << list << endl;  // [3, 4, 1, 2]
-    list.insert(6, 2);
-    cout << "Length: " << list.length() << " - " << list << endl;  // [3, 4, 6, 1, 2]
-    list.set(5, 2);
-    cout << "Length: " << list.length() << " - " << list << endl;  // [3, 4, 5, 1, 2]
-    cout << "Get(3): " << list.get(3) << endl;  // 1
-    list.remove(1);
-    cout << "Length: " << list.length() << " - " << list << endl;  // [3, 5, 1, 2]
-    list.remove(3);
-    cout << "Length: " << list.length() << " - " << list << endl;  // [3, 5, 1]
-    cout << "Empty(): " << (list.empty() ? "true" : "false") << endl;  // False
-    cout << "Overload [] (using 1): " << list[1] << endl;
-    list[1] = 7;
-    cout << "Overload [] (using 1 after direct edit): " << list[1] << endl;
-    cout << list << endl;
-    return 0;
+TEST(VectorTest, VectorWithCapacity) {
+    Vector<int> emptyVec(2);
+    ASSERT_EQ(emptyVec.length(), 0);
+    ASSERT_EQ(emptyVec.capacity(),2);
+}
+
+TEST(VectorTest, ZeroCapacity) {
+    Vector<int> emptyVec(0);
+    ASSERT_EQ(emptyVec.length(), 0);
+    ASSERT_EQ(emptyVec.capacity(), 0);
+    emptyVec.prepend(1);
+    ASSERT_EQ(emptyVec.length(), 1);
+    ASSERT_EQ(emptyVec.capacity(), myds::DEFAULT_VECTOR_CAPACITY);
+
+}
+
+TEST(VectorTest, EmptyMethod) {
+    Vector<int> v1;
+    ASSERT_EQ(v1.empty(), true);
+    v1.append(5);
+    ASSERT_EQ(v1.empty(), false);
+}
+
+TEST(VectorTest, Stream) {
+    Vector<int> v1 = createVector();
+    std::stringstream ss;
+    ss << v1;
+    ASSERT_EQ(ss.str(), EXPECTED_STR);
 }
