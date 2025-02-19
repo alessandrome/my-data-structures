@@ -35,7 +35,6 @@ TEST(VectorTest, ZeroCapacity) {
     emptyVec.prepend(1);
     ASSERT_EQ(emptyVec.length(), 1);
     ASSERT_EQ(emptyVec.capacity(), myds::DEFAULT_VECTOR_CAPACITY);
-
 }
 
 TEST(VectorTest, EmptyMethod) {
@@ -43,6 +42,22 @@ TEST(VectorTest, EmptyMethod) {
     ASSERT_EQ(v1.empty(), true);
     v1.append(5);
     ASSERT_EQ(v1.empty(), false);
+}
+
+TEST(VectorTest, FullMethod) {
+    Vector<int> v1 = createVector();
+    ASSERT_EQ(v1.full(), false);
+    v1.append(5);
+    ASSERT_EQ(v1.full(), true);
+}
+
+TEST(VectorTest, IncreaseCapacity) {
+    Vector<int> v1 = createVector();
+    size_t capacity = v1.capacity();
+    v1.append(100);
+    ASSERT_EQ(v1.capacity(), capacity);
+    v1.append(101);
+    ASSERT_EQ(v1.capacity(), capacity * 2);
 }
 
 TEST(VectorTest, Stream) {
