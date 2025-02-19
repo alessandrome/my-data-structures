@@ -156,14 +156,27 @@ namespace myds {
     }
 
     template <typename T>
-    Vector<T> &Vector<T>::operator+=(const T &rVec) {
-        // TODO
+    Vector<T> &Vector<T>::operator+=(const T &rValue) {
+        append(rValue);
         return *this;
     }
 
     template <typename T>
     Vector<T> &Vector<T>::operator+=(const Vector &rVec) {
-        // TODO: concatenate
+        // Check total size and increment array space if needed
+        size_t totalSize = _size + rVec._size;
+        if (totalSize > _capacity) {
+            _incrementSize(totalSize);
+        }
+
+        // Add element from the right Vector
+        for (size_t i = 0; i < rVec._size; ++i) {
+            _array[_tail] = rVec._array[(rVec._head + i) % rVec._capacity];
+            _tail = (_tail + 1) % _capacity;
+        }
+
+        // Update size and return vector
+        _size = totalSize;
         return *this;
     }
 
