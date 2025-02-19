@@ -9,8 +9,9 @@ project(my_data_structures)
 # Abilita il supporto ai test in CMake
 enable_testing()
 
-# Find Google Testing package
+# Find Google Testing & Benchmarks packages
 find_package(GTest CONFIG REQUIRED)
+find_package(benchmark CONFIG REQUIRED)
 
 # Definisci la directory che contiene i tuoi header template
 #set(INCLUDE_DIRECTORIES basic)
@@ -35,4 +36,16 @@ foreach(TEST_SRC ${TEST_SOURCES})
     add_executable(${TEST_NAME} ${TEST_SRC})
     target_link_libraries(${TEST_NAME} GTest::gtest GTest::gtest_main)
     add_test(NAME ${TEST_NAME} COMMAND ${TEST_NAME})
+endforeach()
+
+# List of benchmarks to compile and run independently
+set(BENCHMARK_SOURCES
+        benchmarks/templated_vector_benchmarks.cpp
+)
+
+# Create an executable for each benchmark file
+foreach(BENCHMARK_SRC ${BENCHMARK_SOURCES})
+    get_filename_component(BENCHMARK_NAME ${BENCHMARK_SRC} NAME_WE)
+    add_executable(${BENCHMARK_NAME} ${BENCHMARK_SRC})
+    target_link_libraries(${BENCHMARK_NAME} benchmark::benchmark)
 endforeach()
