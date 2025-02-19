@@ -57,6 +57,9 @@ namespace myds {
     bool Vector<T>::empty() const { return _size == 0; }
 
     template <typename T>
+    bool Vector<T>::full() const { return _size == _capacity; }
+
+    template <typename T>
     void Vector<T>::append(const T &element) {
         if (_size == _capacity) {
             _incrementSize(_capacity ? _capacity : DEFAULT_VECTOR_CAPACITY);

@@ -25,6 +25,7 @@ namespace myds {
         size_t length() const;
         size_t capacity() const;
         bool empty() const;
+        bool full() const;
         void append(const T &element);
         void prepend(const T &element);
         void insert(const T &element, size_t index); // Index starts from 0
