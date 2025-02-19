@@ -47,5 +47,5 @@ set(BENCHMARK_SOURCES
 foreach(BENCHMARK_SRC ${BENCHMARK_SOURCES})
     get_filename_component(BENCHMARK_NAME ${BENCHMARK_SRC} NAME_WE)
     add_executable(${BENCHMARK_NAME} ${BENCHMARK_SRC})
-    target_link_libraries(${BENCHMARK_NAME} benchmark::benchmark)
+    target_link_libraries(${BENCHMARK_NAME} benchmark::benchmark pthread)
 endforeach()
