@@ -47,5 +47,9 @@ set(BENCHMARK_SOURCES
 foreach(BENCHMARK_SRC ${BENCHMARK_SOURCES})
     get_filename_component(BENCHMARK_NAME ${BENCHMARK_SRC} NAME_WE)
     add_executable(${BENCHMARK_NAME} ${BENCHMARK_SRC})
-    target_link_libraries(${BENCHMARK_NAME} benchmark::benchmark pthread)
+    target_link_libraries(${BENCHMARK_NAME} benchmark::benchmark)
+
+    if(NOT WIN32) # Cond. Unix-like (not Windows)
+        target_link_libraries(${BENCHMARK_NAME} pthread) # Link pthread only on Unix-like
+    endif()
 endforeach()
