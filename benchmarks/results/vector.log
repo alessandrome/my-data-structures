@@ -1,0 +1,51 @@
+Run on (32 X 3200 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x16)
+  L1 Instruction 32 KiB (x16)
+  L2 Unified 512 KiB (x16)
+  L3 Unified 32768 KiB (x2)
+-------------------------------------------------------------------
+Benchmark                         Time             CPU   Iterations
+-------------------------------------------------------------------
+BM_VectorAppend/256             427 ns          541 ns      1445161
+BM_VectorAppend/512             432 ns          490 ns      1723077
+BM_VectorAppend/1024            455 ns          516 ns      1120000
+BM_VectorAppend/2048            517 ns          378 ns      1445161
+BM_VectorAppend/4096            631 ns          502 ns      1120000
+BM_VectorAppend/8192            584 ns          658 ns      1520486
+BM_VectorAppend/16384           583 ns          586 ns      1120000
+BM_VectorAppend/32768           639 ns          460 ns      1866667
+BM_VectorAppend/65536           914 ns          797 ns      1000000
+BM_VectorAppend/131072        34714 ns        33865 ns        26761
+BM_VectorAppend/262144        59907 ns        61035 ns         8960
+BM_VectorAppend/524288       108962 ns       125552 ns         4978
+BM_VectorAppend/1048576      225840 ns       284630 ns         2635
+BM_VectorAppend_RMS              15 %            13 %
+BM_VectorPrepend/256           1378 ns         1389 ns       551385
+BM_VectorPrepend/512           1343 ns         1268 ns       727188
+BM_VectorPrepend/1024          1382 ns         1562 ns       640000
+BM_VectorPrepend/2048          1494 ns         1053 ns       608194
+BM_VectorPrepend/4096          1732 ns         1475 ns       497778
+BM_VectorPrepend/8192          1811 ns         2009 ns      1120000
+BM_VectorPrepend/16384         1843 ns         2186 ns       278756
+BM_VectorPrepend/32768         1887 ns         1611 ns       320000
+BM_VectorPrepend/65536         6344 ns         5781 ns       100000
+BM_VectorPrepend/131072       13425 ns        12695 ns        64000
+BM_VectorPrepend/262144      114019 ns        89062 ns        10000
+BM_VectorPrepend/524288      201955 ns       200884 ns         2489
+BM_VectorPrepend/1048576     408232 ns       474330 ns         1120
+BM_VectorPrepend_RMS             20 %            22 %
+BM_VectorInsert/256             728 ns          781 ns      1000000
+BM_VectorInsert/512            1007 ns          854 ns       640000
+BM_VectorInsert/1024           1555 ns         1423 ns       560000
+BM_VectorInsert/2048           2638 ns         2609 ns       263529
+BM_VectorInsert/4096           5055 ns         5156 ns       100000
+BM_VectorInsert/8192           9595 ns         7847 ns        89600
+BM_VectorInsert/16384         20650 ns        21868 ns        40727
+BM_VectorInsert/32768         40665 ns        37424 ns        15448
+BM_VectorInsert/65536         73502 ns        78125 ns         6400
+BM_VectorInsert/131072       172102 ns       150663 ns         4978
+BM_VectorInsert/262144       405756 ns       424948 ns         1434
+BM_VectorInsert/524288       797073 ns       794846 ns          747
+BM_VectorInsert/1048576     1249458 ns      1270933 ns          836
+BM_VectorInsert_RMS              22 %            22 %
