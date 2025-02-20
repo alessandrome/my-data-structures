@@ -61,6 +61,36 @@ TEST(VectorTest, FullMethod) {
     ASSERT_EQ(v1.full(), true);
 }
 
+TEST(VectorTest, Append) {
+    Vector<int> v1 = createVector();
+    // TODO
+}
+
+TEST(VectorTest, Prepend) {
+    Vector<int> v1 = createVector();
+    // TODO
+}
+
+TEST(VectorTest, Remove) {
+    Vector<int> v1 = createVector();
+    // TODO
+}
+
+TEST(VectorTest, Get) {
+    Vector<int> v1 = createVector();
+    // TODO
+}
+
+TEST(VectorTest, Set) {
+    Vector<int> v1 = createVector();
+    // TODO
+}
+
+TEST(VectorTest, Find) {
+    Vector<int> v1 = createVector();
+    // TODO
+}
+
 TEST(VectorTest, IncreaseCapacity) {
     Vector<int> v1 = createVector();
     size_t capacity = v1.capacity();
@@ -118,6 +148,11 @@ TEST(VectorTest, Assignment) {
     for (size_t i = 0; i < v1.length(); i++) {
         ASSERT_EQ(v1.get(i), v2.get(i));
     }
+}
+
+TEST(VectorTest, SquareBracket) {
+    Vector<int> v1 = createVector();
+    // TODO
 }
 
 TEST(VectorTest, Stream) {
