@@ -184,6 +184,11 @@ namespace myds {
     }
 
     template <typename T>
+    T &Vector<T>::operator[](size_t index) {
+        return get(index);
+    }
+
+    template <typename T>
     std::ostream &operator<<(std::ostream &os, const Vector<T> &rVec) {
         os << '[';
         for (size_t i = 0; i < rVec._size; ++i) {

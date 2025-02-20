@@ -37,6 +37,7 @@ namespace myds {
         Vector &operator+=(const Vector &rVec);
         Vector &operator+=(const T &rVec);
         Vector &operator=(const Vector &rVec);
+        T &operator[](size_t);
 
         template<typename F>
         friend std::ostream &operator<<(std::ostream &os, const Vector<F> &rVec);
