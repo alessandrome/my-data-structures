@@ -30,6 +30,14 @@ TEST(VectorTest, VectorWithCapacity) {
     ASSERT_EQ(emptyVec.capacity(),2);
 }
 
+TEST(VectorTest, CopyConstructor) {
+    Vector<int> v1 = createVector();
+    Vector<int> v2 = v1;
+    for (size_t i = 0; i < v1.length(); i++) {
+        ASSERT_EQ(v1.get(i), v2.get(i));
+    }
+}
+
 TEST(VectorTest, ZeroCapacity) {
     Vector<int> emptyVec(0);
     ASSERT_EQ(emptyVec.length(), 0);
@@ -100,6 +108,16 @@ TEST(VectorTest, PlusEqualVectorOperatorWithoutResize) {
     std::stringstream ss;
     ss << v1;
     ASSERT_EQ(ss.str(), EXPECTED_STR_3);
+}
+
+TEST(VectorTest, Assignment) {
+    Vector<int> v1 = createVector();
+    Vector<int> v2;
+    v2.append(100);
+    v2 = v1;
+    for (size_t i = 0; i < v1.length(); i++) {
+        ASSERT_EQ(v1.get(i), v2.get(i));
+    }
 }
 
 TEST(VectorTest, Stream) {
