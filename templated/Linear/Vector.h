@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <cstddef>
+#include <optional>
 
 namespace myds {
     constexpr size_t DEFAULT_VECTOR_CAPACITY = 8;
@@ -33,6 +34,7 @@ namespace myds {
         T &get(size_t index) const;
         void set(const T &value, size_t index);
         void remove(size_t index);
+        std::optional<size_t> find(const T &);
 
         Vector &operator+=(const Vector &rVec);
         Vector &operator+=(const T &rVec);

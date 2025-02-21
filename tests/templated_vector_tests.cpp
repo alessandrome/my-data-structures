@@ -88,7 +88,10 @@ TEST(VectorTest, Set) {
 
 TEST(VectorTest, Find) {
     Vector<int> v1 = createVector();
-    // TODO
+    std::optional<size_t> found = v1.find(5), notFound = v1.find(100);
+    ASSERT_EQ(found.has_value(), true);
+    ASSERT_EQ(notFound.has_value(), false);
+    ASSERT_EQ(found.value(), 5);
 }
 
 TEST(VectorTest, IncreaseCapacity) {

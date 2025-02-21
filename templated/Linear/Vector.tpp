@@ -150,6 +150,14 @@ namespace myds {
     }
 
     template <typename T>
+    std::optional<size_t> Vector<T>::find(const T &value) {
+        for (size_t i=0; i<_size; ++i) {
+            if (_array[i] == value) return i;
+        }
+        return std::nullopt;
+    }
+
+    template <typename T>
     Vector<T> &Vector<T>::operator=(const Vector &rVec) {
         if (this != &rVec) {
             delete[] _array;
