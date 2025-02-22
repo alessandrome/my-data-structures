@@ -155,7 +155,11 @@ TEST(VectorTest, Assignment) {
 
 TEST(VectorTest, SquareBracket) {
     Vector<int> v1 = createVector();
-    // TODO
+    auto element = v1.get(0);
+    ASSERT_EQ(v1[0], element);
+    ASSERT_EQ(v1[0], 0);
+    ASSERT_EQ(v1[3], v1.get(3));
+    ASSERT_EQ(v1[3], 3);
 }
 
 TEST(VectorTest, Stream) {
