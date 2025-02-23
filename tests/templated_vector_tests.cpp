@@ -168,3 +168,11 @@ TEST(VectorTest, Stream) {
     ss << v1;
     ASSERT_EQ(ss.str(), EXPECTED_STR);
 }
+
+
+TEST(VectorBoolTest, Stream) {
+    Vector<bool> v1;
+    // std::stringstream ss;
+    // ss << v1;
+    // ASSERT_EQ(ss.str(), EXPECTED_STR);
+}

@@ -41,11 +41,12 @@ namespace myds {
         Vector &operator=(const Vector &rVec);
         T &operator[](size_t);
 
-        template<typename F>
+        template <typename F>
         friend std::ostream &operator<<(std::ostream &os, const Vector<F> &rVec);
     };
 } // myds
 
 #include "Vector.tpp"
+#include "VectorBool.h"
 
 #endif //VECTOR_H
