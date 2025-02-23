@@ -37,4 +37,17 @@ namespace myds {
     bool Vector<bool>::empty() const { return _size == 0; }
 
     bool Vector<bool>::full() const { return _size == _capacity * 8; }
+
+    inline void Vector<bool>::append(const bool &element) {
+        if (_size / 8 == _capacity) {
+            _incrementSize(_capacity);
+        }
+        uint8_t bitMask = 1 << (_tail % 8);
+        if (element) {
+            _array[_tail / 8] = element;
+        } else {
+
+        }
+        _size++;
+    }
 } // myds

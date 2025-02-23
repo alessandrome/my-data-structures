@@ -46,7 +46,7 @@ namespace myds {
     };
 } // myds
 
-#include "Vector.tpp"
 #include "VectorBool.h"
+#include "Vector.tpp"
 
 #endif //VECTOR_H

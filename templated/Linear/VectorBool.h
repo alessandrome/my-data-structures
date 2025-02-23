@@ -1,8 +1,6 @@
 #ifndef VECTORBOOL_TPP
 #define VECTORBOOL_TPP
 
-#include "Vector.h"
-
 namespace myds {
     template <>
     class Vector<bool> {
