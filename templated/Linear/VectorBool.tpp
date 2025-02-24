@@ -38,16 +38,17 @@ namespace myds {
 
     bool Vector<bool>::full() const { return _size == _capacity * 8; }
 
-    inline void Vector<bool>::append(const bool &element) {
+    void Vector<bool>::append(const bool &element) {
         if (_size / 8 == _capacity) {
             _incrementSize(_capacity);
         }
         uint8_t bitMask = 1 << (_tail % 8);
         if (element) {
-            _array[_tail / 8] = element;
+            _array[_tail / 8] |= bitMask;
         } else {
-
+            _array[_tail / 8] &= ~bitMask;
         }
+        _tail = (_tail + 1) % (_capacity * 8);
         _size++;
     }
 } // myds
