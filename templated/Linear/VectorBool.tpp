@@ -51,4 +51,18 @@ namespace myds {
         _tail = (_tail + 1) % (_capacity * 8);
         _size++;
     }
+
+    void Vector<bool>::prepend(const bool &element) {
+        if (_size / 8 == _capacity) {
+            _incrementSize(_capacity);
+        }
+        _head = (_head + _capacity * 8 - 1) % (_capacity * 8);
+        uint8_t bitMask = 1 << (_head % 8);
+        if (element) {
+            _array[_head / 8] |= bitMask;
+        } else {
+            _array[_head / 8] &= ~bitMask;
+        }
+        _size++;
+    }
 } // myds
