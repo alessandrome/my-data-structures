@@ -65,4 +65,18 @@ namespace myds {
         }
         _size++;
     }
+
+    bool Vector<bool>::get(size_t index) const {
+        if (index >= _size) {
+            std::string msg = "Vector index ";
+            msg += std::to_string(index);
+            msg += " is out of bounds! (length is ";
+            msg += std::to_string(_size);
+            msg += ")";
+            throw std::out_of_range(msg);
+        }
+        size_t internalIndex = (_head + index) % (_capacity * 8);
+        uint8_t bitMask = 1 << (internalIndex % 8);
+        return (_array[internalIndex / 8] & bitMask) != 0;
+    }
 } // myds

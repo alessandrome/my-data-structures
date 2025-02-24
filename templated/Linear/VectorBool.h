@@ -26,7 +26,7 @@ namespace myds {
         void append(const bool &element);
         void prepend(const bool &element);
         void insert(const bool &element, size_t index); // Index starts from 0
-        bool &get(size_t index) const;
+        bool get(size_t index) const;
         void set(const bool &value, size_t index);
         void remove(size_t index);
         std::optional<size_t> find(const bool &);
