@@ -24,6 +24,7 @@ namespace myds {
         auto oldArray = _array;
         _array = new uint8_t[_capacity + increment];
         std::memcpy(_array, oldArray, _capacity);
+        // TODO: memcpy wrong-> correct reordering (whem _head > _tail)
         delete[] oldArray;
         _capacity += increment;
     }

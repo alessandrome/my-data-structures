@@ -12,6 +12,7 @@ namespace myds {
         uint8_t *_array;
         void _deepCopy(const Vector &);
         void _incrementSize(size_t);
+        void _headReorder();
 
         public:
         Vector();
