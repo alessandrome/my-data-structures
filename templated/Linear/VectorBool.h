@@ -13,6 +13,7 @@ namespace myds {
         void _deepCopy(const Vector &);
         void _incrementSize(size_t);
         void _headReorder();
+        void _shiftArray(size_t);
 
         public:
         Vector();

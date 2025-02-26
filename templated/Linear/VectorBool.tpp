@@ -29,6 +29,22 @@ namespace myds {
         _capacity += increment;
     }
 
+    inline void Vector<bool>::_shiftArray(size_t rShift) {
+
+    }
+
+    void Vector<bool>::_headReorder() {
+        if (_head >= _tail) {
+            uint8_t headByte = _head / 8;
+            uint8_t headBitOffset = _head % 8;
+            uint8_t headMask = std::numeric_limits<uint8_t>::max() >> headBitOffset;
+            uint8_t headByteValue = _array[headByte] & headMask; // Byte representing the actual state of byte containing head, starting from head bit
+            if (_capacity > 1 && _size / 8 < _capacity - 1) {
+                size_t endingBytes = _size / 8 - headByte;
+            }
+        }
+    }
+
     size_t Vector<bool>::length() const { return _size; }
 
     size_t Vector<bool>::capacity() const { return _capacity * 8; }
