@@ -28,6 +28,7 @@ set(TEST_SOURCES
         tests/templated_stack_tests.cpp
         tests/templated_bstree_tests.cpp
         tests/templated_avltree_tests.cpp
+        tests/templated_rbtree_tests.cpp
 )
 
 # Creare un eseguibile separato per ogni test
