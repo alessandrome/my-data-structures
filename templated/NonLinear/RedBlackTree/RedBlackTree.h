@@ -17,6 +17,7 @@ namespace myds {
 
         public:
         RedBlackTree();
+        RedBlackTree(bool);
         RedBlackTree(const RedBlackTree &);
         ~RedBlackTree();
     };
