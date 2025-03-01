@@ -43,6 +43,6 @@ namespace myds {
 
     template <typename T>
     bool RedBlackTree<T>::find(T &value) {
-        bool found = false;
+        return _find(value, _root);
     }
 } // myds
