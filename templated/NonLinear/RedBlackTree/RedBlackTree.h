@@ -5,7 +5,6 @@
 #include "RedBlackTreeNode.h"
 
 namespace myds {
-
     template <typename T>
     class RedBlackTree {
         private:
@@ -14,14 +13,15 @@ namespace myds {
         const bool _allowDuplicates = false;
         RedBlackTree *_deepCopy(const RedBlackTreeNode<T> *);
         void _deepDelete(RedBlackTreeNode<T> *);
+        bool _find(T &, RedBlackTreeNode<T> *);
 
         public:
         RedBlackTree();
         RedBlackTree(bool);
         RedBlackTree(const RedBlackTree &);
         ~RedBlackTree();
+        bool find(T &);
     };
-
 } // myds
 
 #include "RedBlackTree.tpp"

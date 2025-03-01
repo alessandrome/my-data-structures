@@ -32,4 +32,17 @@ namespace myds {
         _deepDelete(root->right());
         delete root;
     }
+
+    template <typename T>
+    bool RedBlackTree<T>::_find(T &value, RedBlackTreeNode<T> *root) {
+        if (!root) return false;
+        if (value < root->value()) return _find(value, root->left());
+        if (value > root->value()) return _find(value, root->right());
+        return true;
+    }
+
+    template <typename T>
+    bool RedBlackTree<T>::find(T &value) {
+        bool found = false;
+    }
 } // myds
